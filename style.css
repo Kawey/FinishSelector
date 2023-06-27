@@ -490,7 +490,7 @@ height: auto;
   }
 
   @media screen and (max-height: 800px) {
-  
+
     .layers.summary-mod {
       height: 100%;
       width: 100%;
@@ -499,12 +499,14 @@ height: auto;
 
     .info-box-album {
       /* container */
+      display: flex;
+      display: none;
       margin: 1rem;
       background: #FFFFFF;
       border-radius: 1rem;
       padding: 1rem;
       flex-shrink: 1;
-      display: flex;
+      
       flex-direction: column;
       flex: none
     }
