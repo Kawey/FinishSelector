@@ -231,7 +231,7 @@ button {
   border-radius: 8px;
   color: #6e6e6e;
   cursor: pointer;
-  font-size: clamp(0.75rem, 1.8vh, 2rem);
+  font-size: clamp(0.75rem, 2vh, 2rem);
   font-weight: 500;
   line-height: 20px;
   margin: 1% 5%;
