@@ -489,7 +489,7 @@ height: auto;
     color: #444444;
   }
 
-  @media screen and (max-height: 800px) {
+  @media screen and (max-height: 900px) {
 
     .layers.summary-mod {
       height: 100%;
@@ -544,6 +544,20 @@ height: auto;
       /* overide */
     }
   }
+
+    @media screen and (device-width: 360px) 
+    and (device-height: 640px) 
+    and (-webkit-device-pixel-ratio: 4) 
+    and (orientation: landscape) {
+      .info-box-album {
+        display: none;
+
+      }
+
+      .box-category-reset {
+        background-color: #cbd8da;
+      }
+    }
 }
 
 /* PORTRAIT for desktop and mobile */
