@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+}
+
+.modal-FP-land {
+  max-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+}
+
+.modal-FP-content {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10%;
+  margin: auto;
+  width: 100%;
+}
+
+.modal-FP-content div {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.modal-FP-content img {
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal-FP-land header {
+  flex: 0 0 8vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  margin: auto;
+  color: #444;
+  font-weight: 600;
+}
+
+.modal-FP-land footer {
+  flex: 0 0 8vh;
+  min-height: 55px;
+  width: 100%;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+padding-left: 10%;
+
+}
+
+.btn_pdf {
+  margin: 0 auto;
+}
+
+.btn-close-FP-lands {
+  float: right;
+  margin-right: 5%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.site-logo-title {
+height: 80%;
+}
+
+@media screen  and (orientation: portrait) {
+  
+
+}
+
+@media (max-aspect-ratio: 3/4) {
+  .modal-FP-content {
+      flex-direction: column;
+      padding: 0;
+      width: 50%;
+    }
+  
+    .modal-FP-content img {
+      max-width: 80%;
+    }
+}
