@@ -38,6 +38,24 @@
     </div>
     <!-- Main Container -->
     <div class="main-container getSumMod">
+      <nav class="nav-mobile">
+        <button id="btnInfo" class="nav-buttons">
+          <img class="icon-nav" src="./ui_icons/icon_m_info.png" alt="">
+          <span>INFO</span>
+        </button>
+        <button id="btnF" class="nav-buttons" onclick="location.href='./floor-plan.html'" type="button">
+          <img class="icon-nav" src="./ui_icons/icon_m_fp.png" alt="">
+          <span>FLOOR PLAN</span>
+        </button>
+        <button id="btnSummary" class="nav-buttons">
+          <img class="icon-nav" src="./ui_icons/icon_m_sum.png" alt="">
+          <span>SUMMARY</span>
+        </button>
+        <button id="btnReset" class="nav-buttons">
+          <img class="icon-nav" src="./ui_icons/icon_m_reset.png" alt="">
+          <span>RESET</span>
+        </button>
+      </nav>
       <div class="sidebar getSumMod" id="sidebar">
         
         <!-- SUMMARY -->
@@ -232,26 +250,10 @@
           <button class="btn-stummary getSumMod" id="btnSumLands"> 
             <img src="./ui_icons/icon_summary.png" alt=""> <span class="btn-stummary-txt"> Summary</span> 
           </button>
-          <nav class="nav-mobile">
-            <button id="btnInfo" class="nav-buttons">
-              <img class="icon-nav" src="./ui_icons/icon_m_info.png" alt="">
-              <span>INFO</span>
-            </button>
-            <button id="btnF" class="nav-buttons" onclick="location.href='./floor-plan.html'" type="button">
-              <img class="icon-nav" src="./ui_icons/icon_m_fp.png" alt="">
-              <span>FLOOR PLAN</span>
-            </button>
-            <button id="btnSummary" class="nav-buttons">
-              <img class="icon-nav" src="./ui_icons/icon_m_sum.png" alt="">
-              <span>SUMMARY</span>
-            </button>
-            <button id="btnReset" class="nav-buttons">
-              <img class="icon-nav" src="./ui_icons/icon_m_reset.png" alt="">
-              <span>RESET</span>
-            </button>
-          </nav>
+          
         </div> <!--end box-category-->
       </div> <!--end Sidebar -->
+      
       <!--    OPTION BOX    -->
       <div class="option-box getSumMod" id="option-box">
         <div class="mob-footer option-title">
@@ -348,6 +350,7 @@
       <div class="imagebox getSumMod">
         <img class="layers getSumMod" src="bg.jpg" alt="">
       </div>
+      
       <button class="close-sum-mob getSumMod" id="btnCloseSumMob">X</button>
     </div> <!--Main container-->
     <footer class="footer-summary get-footer-header getSumMod">

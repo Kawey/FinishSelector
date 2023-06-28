@@ -1,3 +1,15 @@
+/* Architecture 
+  1 landscape and potraite selectors
+
+  2 Landscape pecific
+  2a - Landscape mobile
+
+  3 Portrait pecific 
+  3a - Portraite mobile
+
+
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -97,7 +109,6 @@ button {
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
 }
-.nav-mobile {display: none;}
 
 .box-category-reset {
   display: flex;
@@ -393,6 +404,32 @@ height: auto;
   right: 20px;
 }
 
+.nav-mobile {
+  display: none;
+  justify-content: space-evenly;
+  background-color: #fdfdfd;
+  
+  flex-shrink: 0;
+}
+
+.nav-buttons {
+  border: none;
+  background-color: rgba(51, 51, 51, 0.00);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.nav-buttons span {
+  color: #7A7A7A;
+  font-size: 8px;
+  font-family: Roboto;
+  line-height: 160%;
+}
+
 /*--    LANDSCAPE    --*/
 @media (orientation: landscape) {
   .nav-summary,
@@ -404,6 +441,14 @@ height: auto;
   /* 
     SUMMARY MOD
   */
+
+  .nav-mobile {
+    width: 60px;
+  }
+
+  .nav-buttons img {
+    width: 55%;
+  }
 
   .top-container{
     display: flex;
@@ -545,17 +590,21 @@ height: auto;
     }
   }
 
-    @media screen and (device-width: 360px) 
-    and (device-height: 640px) 
-    and (-webkit-device-pixel-ratio: 4) 
-    and (orientation: landscape) {
-      .info-box-album {
-        display: none;
+  @media screen and (min-device-width: 666px) 
+  and (min-device-height: 374px) 
+  and (-webkit-min-device-pixel-ratio: 2.0)
+  and (orientation: landscape) {
 
+    .info-box-album {display: none;}
+
+      .nav-mobile {
+        display: flex;
+        flex-direction: column;
       }
 
       .box-category-reset {
-        background-color: #cbd8da;
+        background-color: #333333;
+        display: none;
       }
     }
 }
@@ -592,37 +641,19 @@ height: auto;
 
   .info-box-album {display: none;}
 
-  .nav-mobile {
-    display: flex;
-    justify-content: space-evenly;
-    background-color: rgb(218, 234, 240);
-    height: 60px;
-  }
-
-  .nav-buttons {
-    border: none;
-    background-color: rgba(51, 51, 51, 0.00);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-buttons img {
-    height: 55%;
-  }
-
-  .nav-buttons span {
-    color: #7A7A7A;
-      font-size: 10px;
-      font-family: Roboto;
-      line-height: 160%;
-  }
-
   .box-category {
     display: flex;
     justify-content: space-between;
   }
+
+    .nav-mobile {
+      display: flex;
+      height: 60px;
+    }
+
+        .nav-buttons img {
+          height: 55%;
+        }
 
   .mob-footer {
     margin-top: 2%;
