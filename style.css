@@ -358,7 +358,6 @@ height: auto;
   object-fit: cover;
 }
 
-/* Portrait (MOBILE) */
 .modal-info-mobile {
   display: none;
   align-items: center;
@@ -408,8 +407,15 @@ height: auto;
   display: none;
   justify-content: space-evenly;
   background-color: #fdfdfd;
-  
   flex-shrink: 0;
+}
+
+.nav-mobile.summary-mod {
+  display: none;
+}
+
+.nav-mobile.option-mod {
+  display: none;
 }
 
 .nav-buttons {
@@ -421,8 +427,6 @@ height: auto;
   justify-content: center;
 }
 
-
-
 .nav-buttons span {
   color: #7A7A7A;
   font-size: 8px;
@@ -430,7 +434,7 @@ height: auto;
   line-height: 160%;
 }
 
-/*--    LANDSCAPE    --*/
+/*////////////////////////////// LANDSCAPE  /////////////////////////////////////////////////////  --*/
 @media (orientation: landscape) {
   .nav-summary,
   .close-sum-mob,

@@ -83,9 +83,11 @@ window.addEventListener("load", (event) => {
   categoryBtns.forEach(element => {
     element.addEventListener('click', () => {
       const sidebar = document.getElementById("sidebar")
+      const navBarMob = document.getElementById("nav-mobile")
       // Your event handler code goes here
       optionBox.classList.add("option-mod")
       sidebar.classList.add("option-mod")
+      navBarMob.classList.add("option-mod")
       console.log(' category Element clicked:', element);
     });
   });
@@ -93,8 +95,10 @@ window.addEventListener("load", (event) => {
   btnCloseOptions.addEventListener('click', () => {
     console.log("click");
     const sidebar = document.getElementById("sidebar")
+    const navBarMob = document.getElementById("nav-mobile")
     sidebar.classList.remove("option-mod")
     optionBox.classList.remove("option-mod")
+    navBarMob.classList.remove("option-mod")
   })
   // Get the modal
 
@@ -134,7 +138,7 @@ function activateSummary(elements) {
   //btnSumLands.style.display = "none";
   modSummary.style.display = "flex";
 
-  elements.forEach(element => {
+  elements.forEach((element, index) => {
     element.classList.add("summary-mod");
 
     if (element.classList.contains("imagebox")) {
@@ -145,30 +149,36 @@ function activateSummary(elements) {
     }
     switch (true) {
       case element.classList.contains("box-category"):
-        console.log("hahaha")
+        console.log(index, "nope")
         element.style.display = "none";
         break;
       case element.classList.contains("info-box-album"):
-        console.log("nope")
+        console.log(index, "nope")
         break;
       case element.classList.contains("box-mods-header"):
-        console.log("nope")
+        console.log(index, "nope")
         break;
       case element.classList.contains("footer-summary"):
-        console.log("nope")
+        console.log(index, "nope")
         break;
       case element.classList.contains("btn-stummary"):
-        console.log("nope")
+        console.log(index, "nope")
         break;
       case element.classList.contains("close-sum-mob"):
-        console.log("nope")
+        console.log(index, "nope")
         break;
       case element.classList.contains("option-box"):
-        console.log("nope")
+        console.log(index, "nope")
+        break;
+      case element.classList.contains("nav-mobile"):
+        console.log(index,"nope")
+        break;
+      case element.classList.contains("sidebar"):
+        console.log(index, "nope")
         break;
       default:
         element.style.display = "flex"
-        console.log("yes", element);
+        console.log(index,"yes", element);
         break;
     }
   })
