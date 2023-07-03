@@ -40,7 +40,7 @@
           <img class="icon-nav" src="./ui_icons/icon_m_info.png" alt="">
           <span>INFO</span>
         </button>
-        <button id="btnF" class="nav-buttons" onclick="location.href='./floor-plan.html'" type="button">
+        <button id="btnFP" class="nav-buttons" onclick="location.href='./floor-plan.html'" type="button">
           <img class="icon-nav" src="./ui_icons/icon_m_fp.png" alt="">
           <span>FLOOR PLAN</span>
         </button>
@@ -57,6 +57,10 @@
         
         <!-- SUMMARY -->
         <div class="box-summary" id="box-summary" style="display: none;">
+          <div class="mob-footer box-themes">
+            <button class="btn-theme btnCloseSum"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
+            <div class="theme-name">Summary</div>
+          </div>
           <div class="box-summary-table">
             <div class="sum-category">
               <h2>Wall #1</h2>
@@ -183,7 +187,10 @@
               </div>
             </div>
           </div>
-          <nav class="nav-summary"><button>DOWNLOAD</button></nav>
+          <nav class="nav-summary">
+            <button class="blue-btns">Download PDF</button>
+            <button class="blue-btns">Share</button>
+          </nav>
         </div>
 
         <div class="box-category getSumMod" id="box-category" >
@@ -320,15 +327,15 @@
         <img class="layers getSumMod" src="bg.jpg" alt="">
       </div>
       
-      <button class="close-sum-mob getSumMod" id="btnCloseSumMob">X</button>
+      <button class="close-sum-mob getSumMod btnCloseSum" id="btnCloseSumMob">X</button>
     </div> <!--Main container-->
     <footer class="footer-summary get-footer-header getSumMod">
       <div>
-        <button>Download PDF</button>
-        <button>Share</button>
+        <button class="blue-btns">Download PDF</button>
+        <button class="blue-btns">Share</button>
       </div>
       <div class="box-close-sum">
-        <button class="btn-close-sum-lands" id="btnCloseSumLands">Close</button>
+        <button class="blue-btns btn-close-sum-lands btnCloseSum" id="btnCloseSumLands">Close</button>
       </div>
     </footer>
   </div><!-- top-containe -->

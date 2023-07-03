@@ -60,24 +60,29 @@ window.addEventListener("load", (event) => {
     activateSummary(elementsSumMod)
   })
 
-  btnCloseSumLands.addEventListener("click", () => {
-    elementsSumMod.forEach(element => {
-      element.classList.remove("summary-mod");
+  const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
+  console.log(btnsCloseSum);
 
-      switch (true) {
-        case element.classList.contains("imagebox"):
-          console.log("haha")
-          break;
+  btnsCloseSum.forEach(btn => {
+    btn.addEventListener('click', () => { 
+      elementsSumMod.forEach(element => {
+        element.classList.remove("summary-mod");
+      })
 
-        default:
-          break;
-      }
+      modSummary.style.display = "none";
+      modCategory.style.display = "flex";
     })
-
-    modSummary.style.display = "none";
-    modCategory.style.display = "flex";
-    
   })
+
+  // btnCloseSumLands.addEventListener("click", () => {
+  //   elementsSumMod.forEach(element => {
+  //     element.classList.remove("summary-mod");
+  //   })
+
+  //   modSummary.style.display = "none";
+  //   modCategory.style.display = "flex";
+    
+  // })
 
   //open options
   categoryBtns.forEach(element => {
@@ -111,25 +116,24 @@ window.addEventListener("load", (event) => {
     activateSummary(elementsSumMod)
     modCategory.style.display = "none";
     modSummary.style.display = "flex";
-    //btnCloseSumMob.style.display = "block";
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
-    console.log(event.target);
+    console.log(event.target.parentElement);
     if (event.target == modalInfo) {
       modalInfo.style.display = "none";
     }
     if (event.target == modalFP) {
       modalFP.style.display = "none";
     }
-    if (event.target.id == "btnCloseSumMob") {
-      modSummary.style.display = "none";
-      modCategory.style.display = "flex";
-      elementsSumMod.forEach(element => {
-        element.classList.remove("summary-mod");
-      })
-    }
+    // if (event.target.id == "btnCloseSumMob" || event.target.parentElement.id == "btnCloseSumMob" ) {
+    //   modSummary.style.display = "none";
+    //   modCategory.style.display = "flex";
+    //   elementsSumMod.forEach(element => {
+    //     element.classList.remove("summary-mod");
+    //   })
+    // }
   }
 });
 
