@@ -37,6 +37,16 @@ button {
   padding-top: 0.5rem;
 }
 
+.header-title {
+  margin: auto;
+  padding-right: 10%;
+
+  font-weight: 700;
+  font-size: 2.5rem;
+  line-height: 1.5;
+  color: #444444;
+}
+
 /*   INFO   */
 .info-box-album { /* container */
   max-height: 33%;
@@ -92,7 +102,7 @@ button {
 .title-site {
   display: inline;
   font-size: 1.5rem;
-  font-size: clamp(1rem, 2vh ,2rem);
+  /* font-size: clamp(1rem, 2vh ,2rem); */
   margin-block-start: 0.5em;
   margin-block-end: 0.5em;
   color: #444444;
@@ -440,6 +450,26 @@ padding-left: 5px;
   line-height: 160%;
 }
 
+.blue-btns {
+  width: 130px;
+  height: 30px;
+  flex-shrink: 0;
+  margin: 0 5px;
+
+  color: #fafafa;
+  background-color: #4A98F3;
+  border: none;
+  border-radius: 3px;
+
+  color: #FFF;
+  font-size: 15px;
+  font-family: Proxima Nova;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+}
+
 /*////////////////////////////// LANDSCAPE  /////////////////////////////////////////////////////  --*/
 @media (orientation: landscape) {
   .nav-summary,
@@ -487,26 +517,6 @@ padding-left: 5px;
   .footer-summary div{
     /* display: flex; */
     margin: auto;
-  }
-  
-  .blue-btns {
-    width: 130px;
-    height: 30px;
-    flex-shrink: 0;
-    margin: 0 5px;
-
-    color: #fafafa;
-    background-color: #4A98F3;
-    border: none;
-    border-radius: 3px;
-
-    color: #FFF;
-    font-size: 15px;
-    font-family: Proxima Nova;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
   }
 
   .box-close-sum {
@@ -557,15 +567,7 @@ padding-left: 5px;
 
   }
 
-  .header-title {
-    margin: auto; 
-    padding-right: 10%;
-
-    font-weight: 700;
-    font-size: clamp(1.0rem,3vh,2em);
-    line-height: 1.5;
-    color: #444444;
-  }
+  
 
   @media screen and (max-height: 700px) {
 
@@ -587,14 +589,6 @@ padding-left: 5px;
       
       flex-direction: column;
       flex: none
-    }
-
-    .site-logo-title {
-      /* item */
-      display: flex;
-      align-items: center;
-      background-color: #444444;
-      height: auto;
     }
 
     .home-info {
