@@ -1,3 +1,4 @@
+
 window.addEventListener("load", (event) => {
   const btnCloseOptions = document.getElementById("btnCloseOption");
   const optionBox = document.getElementById('option-box')
