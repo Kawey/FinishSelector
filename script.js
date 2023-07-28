@@ -1,5 +1,44 @@
+const currentState = new URLSearchParams(window.location.search).get('state');
+console.log("currentState",currentState);
+// On load, check query pram and update the DOM
+window.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded');
+  switch (currentState) {
+    case "category":
+      
+      break;
+    case "options":
+      turnOptionMod()
+      break;
+    case "info":
+      
+      break;
+    case "floorplan":
+      
+      break;
+    case "summary":
+      
+      break;
+    default:
+      break;
+  }
+  //console.log(urlParams);
+  //document.getElementById('paramValue').textContent = currentParamValue || 'None';
+});
+
+function getAllQueryParameters() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryParams = {};
+
+  for (const [paramName, paramValue] of urlParams.entries()) {
+      queryParams[paramName] = paramValue;
+  }
+
+  return queryParams;
+}
 
 window.addEventListener("load", (event) => {
+  console.log('Loaded');
   const btnCloseOptions = document.getElementById("btnCloseOption");
   const optionBox = document.getElementById('option-box')
 
@@ -24,22 +63,21 @@ window.addEventListener("load", (event) => {
 
   const btnCloseFPLands = document.getElementById("btnCloseFPLands");
 
-  // Get the button that opens the modal
+  // Get NAV Mobile buttons
+  // btnCustomize need add in future
   const btnInfo = document.getElementById("btnInfo");
   const btnFP = document.getElementById("btnFP");
   const btnSummary = document.getElementById("btnSummary");
+  //btnReset need add in future
   const btnCloseSumMob = document.getElementById("btnCloseSumMob");
   //console.log('Element clicked:', extIntBtns);
-
+  const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
 
   /*
-      EVENT LISTENERS
+      BUTTONS EVENT LISTENERS
   */
 
-  // btnFPLands.addEventListener("click", () => {
-    
-  // })
-  
+  //Switch Interior / Exterior
   extIntBtns.forEach(element => {
     element.addEventListener('click', () => {
       // Your event handler code goes here
@@ -54,66 +92,53 @@ window.addEventListener("load", (event) => {
     });
   });
 
+  // activate SUMMARY in landscape mode
   btnSumLands.addEventListener("click", () => {
+    updateState("summary")
     const sidebar = document.getElementById("sidebar")
     sidebar.classList.remove("option-mod")
     optionBox.classList.remove("option-mod")
     activateSummary(elementsSumMod)
   })
 
-  const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
-  console.log(btnsCloseSum);
-
+  // close SUMMARY
   btnsCloseSum.forEach(btn => {
     btn.addEventListener('click', () => { 
       elementsSumMod.forEach(element => {
         element.classList.remove("summary-mod");
       })
-
+      updateState("category")
       modSummary.style.display = "none";
       modCategory.style.display = "flex";
     })
   })
 
-  // btnCloseSumLands.addEventListener("click", () => {
-  //   elementsSumMod.forEach(element => {
-  //     element.classList.remove("summary-mod");
-  //   })
-
-  //   modSummary.style.display = "none";
-  //   modCategory.style.display = "flex";
-    
-  // })
-
-  //open options
+  // open OPTIONS
   categoryBtns.forEach(element => {
     element.addEventListener('click', () => {
-      const sidebar = document.getElementById("sidebar")
-      const navBarMob = document.getElementById("nav-mobile")
-      // Your event handler code goes here
-      optionBox.classList.add("option-mod")
-      sidebar.classList.add("option-mod")
-      navBarMob.classList.add("option-mod")
+      updateState("options")
+      turnOptionMod()
       console.log(' category Element clicked:', element);
     });
   });
-
+  // close OPTION
   btnCloseOptions.addEventListener('click', () => {
-    console.log("click");
+    updateState("category")
     const sidebar = document.getElementById("sidebar")
     const navBarMob = document.getElementById("nav-mobile")
     sidebar.classList.remove("option-mod")
     optionBox.classList.remove("option-mod")
     navBarMob.classList.remove("option-mod")
   })
-  // Get the modal
 
-  // When the user clicks on the button, open the modal
+  // avtivate INFO mode nav-bar
   btnInfo.onclick = function () {
+    updateState("info")
     modalInfo.style.display = "flex";
   }
 
   btnSummary.onclick = function () {
+    updateState("summary")
     activateSummary(elementsSumMod)
     modCategory.style.display = "none";
     modSummary.style.display = "flex";
@@ -123,20 +148,60 @@ window.addEventListener("load", (event) => {
   window.onclick = function (event) {
     console.log(event.target.parentElement);
     if (event.target == modalInfo) {
+      updateState("category")
       modalInfo.style.display = "none";
     }
-    if (event.target == modalFP) {
-      modalFP.style.display = "none";
-    }
-    // if (event.target.id == "btnCloseSumMob" || event.target.parentElement.id == "btnCloseSumMob" ) {
-    //   modSummary.style.display = "none";
-    //   modCategory.style.display = "flex";
-    //   elementsSumMod.forEach(element => {
-    //     element.classList.remove("summary-mod");
-    //   })
-    // }
   }
 });
+
+function turnOptionMod() {
+  const sidebar = document.getElementById("sidebar")
+  const navBarMob = document.getElementById("nav-mobile")
+  const optionBox = document.getElementById('option-box')
+  optionBox.classList.add("option-mod")
+  sidebar.classList.add("option-mod")
+  navBarMob.classList.add("option-mod")
+}
+
+function updateNavActiveIcon(targetState) {
+  const activeIcon = document.querySelector(".nav-buttons.activeNavIcon")
+  const activeIconClass = document.getElementsByClassName("nav-buttons activeNavIcon");
+  console.log("activeIcon ",activeIcon, activeIconClass);
+  activeIcon.classList.remove("activeNavIcon")
+  switch (targetState) {
+    case "category":
+      document.getElementById("btnCustomize").classList.add("activeNavIcon")
+      break;
+    case "options":
+      document.getElementById("btnCustomize").classList.add("activeNavIcon")
+      break;
+    case "info":
+      document.getElementById("btnInfo").classList.add("activeNavIcon")
+      break;
+    case "floorplan":
+      document.getElementById("btnFP").classList.add("activeNavIcon")
+      break;
+    case "summary":
+      document.getElementById("btnSummary").classList.add("activeNavIcon")
+      break;
+    default:
+      document.getElementById("btnCustomize").classList.add("activeNavIcon")
+      console.log("Switch default");
+      break;
+  }
+}
+
+function updateState(paramValue) {
+  updateNavActiveIcon(paramValue)
+  // Get the current URL
+  const url = new URL(window.location.href);
+
+  // Set the query parameter
+  url.searchParams.set('state', paramValue);
+  url.searchParams.set('wall', "0")
+  // Update the URL with the new query parameter
+  window.history.replaceState({}, '', url);
+}
 
 function activateSummary(elements) {
   const modSummary = document.getElementById("box-summary");

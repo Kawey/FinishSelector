@@ -434,13 +434,27 @@ padding-left: 5px;
   align-items: center;
   justify-content: center;
 }
-
 .nav-buttons span {
-  color: #7A7A7A;
+  color: #A4A4A4;
   font-size: 8px;
-  font-family: Roboto;
-  line-height: 160%;
 }
+
+.activeNavIcon span,
+.activeNavIcon rect,
+.activeNavIcon path{
+  color: #444444;
+  font-weight: 700;
+  stroke: #444444;
+  /* fill: #444444; */
+}
+
+ /* .activeNavIcon rect {
+  stroke: #444444
+}  */
+
+/* svg {
+  stroke: #ff0000
+}  */
 
 .blue-btns {
   width: 130px;
