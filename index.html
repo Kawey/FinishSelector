@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>08 || Finish Selector</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="./render.js"></script>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -273,20 +274,7 @@
             <div class="btns-ext-int" id="btnInterior">Interior</div>
           </div>
           <div class="box-category-btns" id="exterior-tab" style="display: flex;">
-            <button class="btn-category">Wall #1</button>
-            <button class="btn-category">Wall #2</button>
-            <button class="btn-category">Render</button>
-            <button class="btn-category">Roof</button>
-            <button class="btn-category">Garage</button>
-            <button class="btn-category">Door</button>
-            <button class="btn-category">Gutter</button> 
-            <button class="btn-category">Wall #1</button>
-            <button class="btn-category">Stone</button>
-            <button class="btn-category">Render</button>
-            <button class="btn-category">Roof</button>
-            <button class="btn-category">Garage</button>
-            <button class="btn-category">Door</button>
-            <button class="btn-category">Gutter</button>
+            <button class="btn-category">Test</button>
           </div>
           <div class="box-category-btns" id="interior-tab">
             <div class="btn-category">Benchtop</div>
@@ -310,66 +298,14 @@
           <button class="btn-theme" id="btnCloseOption"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
           <div class="theme-name">Wall #2 Options</div>
         </div>
-        <div class="box-options-tiles" style="display: grid;">
+        <div id="box-options-tiles" class="box-options-tiles" style="display: none;">
           <div class="tile">
               <img src="./ui_icons/brick01.png" alt="">
             <span>First tile</span>
           </div>
-          <div class="tile">
-              <img src="./ui_icons/brick02.png" alt="">
-            <span>Second tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick03.png" alt="">
-            <span>Third tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick04.png" alt="">
-            <span>Forth tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick01.png" alt="">
-            <span>Fifth tile</span>
-          </div>
-           <div class="tile">
-              <img src="./ui_icons/brick02.png" alt="">
-            <span>Sixth tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick03.png" alt="">
-            <span>Seventh tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick04.png" alt="">
-            <span>Eighth tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick01.png" alt="">
-            <span>Eighth tile</span>
-          </div>
-          <div class="tile">
-            <img src="./ui_icons/brick01.png" alt="">
-            <span>Nineth tile</span>
-          </div>
-          <div class="tile">
-            <img src="./ui_icons/brick01.png" alt="">
-            <span>Tenth tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick01.png" alt="">
-            <span>Eleventh tile</span>
-          </div>
-          <div class="tile">
-              <img src="./ui_icons/brick01.png" alt="">
-            <span>Tenth tile</span>
-          </div>
-          <div class="tile">
-            <img src="./ui_icons/brick01.png" alt="">
-            <span>Tenth tile</span>
-          </div> 
         </div>  
       </div>
-      <div class="imagebox getSumMod">
+      <div id="imagebox" class="imagebox getSumMod">
         <img class="layers getSumMod" src="bg.jpg" alt="">
       </div>
     </div> <!--Main container-->
@@ -381,6 +317,7 @@
       <div class="box-close-sum">
         <button class="blue-btns btn-close-sum-lands btnCloseSum" id="btnCloseSumLands">Close</button>
       </div>
+      <div></div>
     </footer>
   </div><!-- top-containe -->
 </body>

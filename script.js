@@ -1,3 +1,6 @@
+//import {sayHi} from './render.js';
+
+
 const currentState = new URLSearchParams(window.location.search).get('state');
 console.log("currentState",currentState);
 // On load, check query pram and update the DOM
@@ -118,9 +121,42 @@ window.addEventListener("load", (event) => {
     element.addEventListener('click', () => {
       updateState("options")
       turnOptionMod()
-      console.log(' category Element clicked:', element);
+      console.log(' category Element clicked:', element.dataset.tab);
+      const tabcontent = document.getElementsByClassName("box-options-tiles");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+    const categoryBtn = document.getElementsByClassName("btn-category");
+    for (let i = 0; i < categoryBtn.length; i++) {
+      categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
+    }
+    document.getElementById(element.dataset.tab).style.display = "grid";
+    console.log("element ",element);
+    element.className += " active";
     });
   });
+
+  function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+  
+    // Get all elements with class="tabcontent" and hide them
+    //const tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+  
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+  
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "flex";
+    evt.currentTarget.className += " active";
+  }
+
   // close OPTION
   btnCloseOptions.addEventListener('click', () => {
     updateState("category")
