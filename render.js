@@ -1,5 +1,49 @@
 //Current satate obj
 const userSelect = {}
+export const presets = [{
+  "Brick": "brick_00.png",
+  "Stone": "stone_00.png",
+  "Roof": "roof_00.png",
+  "Filing": "filing_00.png",
+  "Gate": "gate_00.png",
+  "Door": "door_00.png",
+  "Windows": "windows_00.png"
+},{
+  "Brick": "brick_01.png",
+  "Stone": "stone_01.png",
+  "Roof": "roof_01.png",
+  "Filing": "filing_01.png",
+  "Gate": "gate_01.png",
+  "Door": "door_01.png",
+  "Windows": "windows_01.png"
+},{
+  "Brick": "brick_02.png",
+  "Stone": "stone_02.png",
+  "Roof": "roof_02.png",
+  "Filing": "filing_02.png",
+  "Gate": "gate_02.png",
+  "Door": "door_02.png",
+  "Windows": "windows_02.png"
+},{
+  "Brick": "brick_03.png",
+  "Stone": "stone_03.png",
+  "Roof": "roof_03.png",
+  "Filing": "filing_03.png",
+  "Gate": "gate_03.png",
+  "Door": "door_03.png",
+  "Windows": "windows_03.png"
+},{
+  "Brick": "brick_04.png",
+  "Stone": "stone_04.png",
+  "Roof": "roof_04.png",
+  "Filing": "filing_04.png",
+  "Gate": "gate_04.png",
+  "Door": "door_01.png",
+  "Windows": "windows_04.png"
+}]
+
+
+console.log(presets[0].Brick);
 fetch('asset.json')
   .then(response => response.json())
   .then(data => {
@@ -35,10 +79,12 @@ fetch('asset.json')
     imgBox.innerHTML += `<img class="layers" src="images\\${imgObj.BG}" alt="BG"></img>`
     //Default options loop imgObj.Default
     let imgItems = '';
+    
+    // create main IMG elements
     for (let i = 0; i < importTabs.length; i++) {
       const tab = importTabs[i];
       const imgsrc = getDefaultImg(imgObj.Default[tab], "src")
-      imgItems += `<img class="layers" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
+      imgItems += `<img class="layers main-img" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
       addImg2DOM(imgObj[tab], tab)
     }
     imgBox.innerHTML += imgItems

@@ -105,7 +105,7 @@
         <!-- SUMMARY -->
         <div class="box-summary" id="box-summary" style="display: none;">
           <div class="mob-footer box-themes">
-            <button class="btn-theme btnCloseSum"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
+            <button class="btn-arrow btnCloseSum"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
             <div class="theme-name">Summary</div>
           </div>
           <div class="box-summary-table">
@@ -265,9 +265,9 @@
             <img src="./ui_icons/icon_m_reset.png" alt="">
           </div>
           <div class="mob-footer box-themes">
-            <button class="btn-theme"> <img src="./ui_icons/arrow_left.png" alt="" > </button>
-            <div class="theme-name">Preset #1</div>
-            <button class="btn-theme"><img src="./ui_icons/arrow_right.png" alt=""></button> 
+            <button class="btn-arrow theme" id="arrow-left"> <img src="./ui_icons/arrow_left.png" alt="" > </button>
+            <div class="theme-name">Preset #<span id="themeNumber">1</span></div>
+            <button class="btn-arrow theme" id="arrow-right"><img src="./ui_icons/arrow_right.png" alt=""></button> 
           </div>
           <div class="box-int-ext">
             <div class="btns-ext-int" id="btnExterior">Exterior</div>
@@ -294,7 +294,7 @@
       <!--    OPTION BOX    -->
       <div class="option-box getSumMod" id="option-box">
         <div class="option-title">
-          <button class="btn-arrow" id="btnCloseOption"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
+          <button class="btn-arrow close-option" id="btnCloseOption"> <img src="./ui_icons/arrow_left.png" alt=""> </button>
           <div class="option-name"> <span id="optionName">Wall #2</span> Options</div>
         </div>
         <div id="box-options-tiles" class="box-options-tiles" style="display: none;">

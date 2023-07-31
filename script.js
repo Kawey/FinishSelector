@@ -1,6 +1,6 @@
 //import {sayHi} from './render.js';
-
-
+import {presets} from './render.js'
+let currentTheme = 0
 const currentState = new URLSearchParams(window.location.search).get('state');
 console.log("currentState",currentState);
 // On load, check query pram and update the DOM
@@ -79,6 +79,41 @@ window.addEventListener("load", (event) => {
   /*
       BUTTONS EVENT LISTENERS
   */
+
+  //Switch presets
+  const presetArrowBtns = document.querySelectorAll(".theme")
+  console.log(presetArrowBtns);
+  presetArrowBtns.forEach(element => {
+    element.addEventListener('click', (arrow) => {
+      console.log("this",arrow.currentTarget.id.split('-')[1]);
+      const direction = arrow.currentTarget.id.split('-')[1]
+      if (direction === "right") {
+        switchPreset(currentTheme+1)
+      } else {
+        switchPreset(currentTheme-1)
+      }
+    });
+  });
+
+  function switchPreset(targetTheme) {
+    if (targetTheme <0) {
+      targetTheme = 0
+      return
+    } else if (targetTheme >4) {
+      targetTheme = 4
+    }
+    const imgElms = document.querySelectorAll(".main-img")
+    console.log(imgElms);
+
+    imgElms.forEach(element => {
+      console.log(element.id.slice(3));
+      const type = element.id.slice(3)
+      console.log("&& ",presets[targetTheme][type]);
+      element.src = `images\\${presets[targetTheme][type]}`
+    })
+    document.getElementById("themeNumber").innerHTML = targetTheme+1
+    currentTheme = targetTheme
+  }
 
   //Switch Interior / Exterior
   extIntBtns.forEach(element => {
