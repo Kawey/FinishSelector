@@ -13,7 +13,14 @@ fetch('asset.json')
     //loadSummary(data)
     //activateDefaultColors(data)
     //document.getElementById("defaultOpen").click();
-    console.log("worked");
+    const allOptionTiles = document.querySelectorAll(".tile")
+    allOptionTiles.forEach((tile)=>{
+      tile.addEventListener("click",(evnt)=>{
+        console.log("wow!",evnt.currentTarget, evnt.currentTarget.dataset.type);
+        colorClick(evnt.currentTarget, evnt.currentTarget.dataset.type)
+      })
+    })
+    console.log("Fetch done!");
   })
   .catch(error => console.error(error));
 
@@ -113,8 +120,7 @@ fetch('asset.json')
       let finishIcon = icon? `<img src="./icons/${icon}" alt="">`: `<div style="background: ${color};"></div>`
       tabItems += `<div id="${tab.toLowerCase()}-color0" class=" tile color ${tab.toLowerCase()}-color" 
           data-file="${src}" data-item-name="${name}"
-          data-color="${color}" 
-          onclick="colorClick(event, '${tab}')">
+          data-color="${color}" data-type="${tab}">
         ${finishIcon}
         <span>${name}</span>
       </div>`
@@ -130,15 +136,30 @@ fetch('asset.json')
           //console.log(name, color, src);
           tabItems += `<div class=" tile color ${tab.toLowerCase() }-color" 
       data-file="${src}" data-item-name="${name}"
-          data-color="${color}" 
-      onclick="colorClick(event, '${tab}')">
+          data-color="${color}" data-type="${tab}">
       ${finishIcon}
       <span>${name}</span>
       </div>`
+      //onclick="colorClick(this, '${tab}')"
         }
       }
       div.innerHTML += tabItems
       allTabsDiv.appendChild(div)
+      
+      
     }
     
+  }
+
+  function colorClick(evt, itemName) {
+    //console.log(evt.target.parentElement.id.toLowerCase());
+    console.log("itemName ", `img${itemName}`);
+    const img = document.getElementById(`img${itemName}`)
+    console.log("img", img);
+    console.log("evt.target.dataset.file ",evt.dataset.file);
+    img.src = `images/${evt.dataset.file}`;
+    //document.getElementById(`option-${itemName.toLowerCase()}`).innerText = evt.target.dataset.itemName;
+    //document.getElementById(`${itemName.toLowerCase()}-color`).style.background = evt.target.dataset.color;
+    //console.log(evt.target.parentElement.id.toLowerCase(), evt.target);
+    //activeColor(`${evt.target.parentElement.id.toLowerCase()}-color`, evt.target) 
   }

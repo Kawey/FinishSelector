@@ -117,11 +117,13 @@ window.addEventListener("load", (event) => {
   })
 
   // open OPTIONS
-  categoryBtns.forEach(element => {
+  categoryBtns.forEach((element,index) => {
     element.addEventListener('click', () => {
       updateState("options")
       turnOptionMod()
       console.log(' category Element clicked:', element.dataset.tab);
+      document.getElementById("optionName").innerHTML = element.dataset.tab
+
       const tabcontent = document.getElementsByClassName("box-options-tiles");
       for (let i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
@@ -136,32 +138,15 @@ window.addEventListener("load", (event) => {
     });
   });
 
-  function openTab(evt, tabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-  
-    // Get all elements with class="tabcontent" and hide them
-    //const tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-  
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-  
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "flex";
-    evt.currentTarget.className += " active";
-  }
-
   // close OPTION
   btnCloseOptions.addEventListener('click', () => {
     updateState("category")
     const sidebar = document.getElementById("sidebar")
     const navBarMob = document.getElementById("nav-mobile")
+    const categoryBtn = document.getElementsByClassName("btn-category");
+    for (let i = 0; i < categoryBtn.length; i++) {
+      categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
+    }
     sidebar.classList.remove("option-mod")
     optionBox.classList.remove("option-mod")
     navBarMob.classList.remove("option-mod")
