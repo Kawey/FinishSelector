@@ -2,10 +2,10 @@
 import {presets} from './render.js'
 let currentTheme = 0
 const currentState = new URLSearchParams(window.location.search).get('state');
-console.log("currentState",currentState);
+//console.log("currentState",currentState);
 // On load, check query pram and update the DOM
 window.addEventListener('DOMContentLoaded', function () {
-  console.log('DOMContentLoaded');
+  //console.log('DOMContentLoaded');
   switch (currentState) {
     case "category":
       
@@ -41,7 +41,7 @@ function getAllQueryParameters() {
 }
 
 window.addEventListener("load", (event) => {
-  console.log('Loaded');
+  //console.log('Loaded');
   const btnCloseOptions = document.getElementById("btnCloseOption");
   const optionBox = document.getElementById('option-box')
 
@@ -49,7 +49,7 @@ window.addEventListener("load", (event) => {
   const tabInterior = document.getElementById("interior-tab")
   const tabExterior = document.getElementById("exterior-tab")
   const categoryBtns = document.querySelectorAll('.btn-category')
-
+  console.log("categoryBtns", categoryBtns.length);
   const btnCloseSumLands = document.getElementById("btnCloseSumLands")
 
   const elementsSumMod = document.querySelectorAll('.getSumMod')
@@ -82,7 +82,6 @@ window.addEventListener("load", (event) => {
 
   //Switch presets
   const presetArrowBtns = document.querySelectorAll(".theme")
-  console.log(presetArrowBtns);
   presetArrowBtns.forEach(element => {
     element.addEventListener('click', (arrow) => {
       console.log("this",arrow.currentTarget.id.split('-')[1]);
@@ -151,27 +150,7 @@ window.addEventListener("load", (event) => {
     })
   })
 
-  // open OPTIONS
-  categoryBtns.forEach((element,index) => {
-    element.addEventListener('click', () => {
-      updateState("options")
-      turnOptionMod()
-      console.log(' category Element clicked:', element.dataset.tab);
-      document.getElementById("optionName").innerHTML = element.dataset.tab
 
-      const tabcontent = document.getElementsByClassName("box-options-tiles");
-      for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-    const categoryBtn = document.getElementsByClassName("btn-category");
-    for (let i = 0; i < categoryBtn.length; i++) {
-      categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
-    }
-    document.getElementById(element.dataset.tab).style.display = "grid";
-    console.log("element ",element);
-    element.className += " active";
-    });
-  });
 
   // close OPTION
   btnCloseOptions.addEventListener('click', () => {
@@ -208,9 +187,34 @@ window.addEventListener("load", (event) => {
       modalInfo.style.display = "none";
     }
   }
-});
+}); //load end
 
-function turnOptionMod() {
+export function openOptionMenu(params) {
+    // open OPTIONS
+    const categoryBtns = document.querySelectorAll('.btn-category')
+    categoryBtns.forEach((element,index) => {
+      element.addEventListener('click', () => {
+        updateState("options")
+        turnOptionMod()
+        console.log(' category Element clicked:', element.dataset.tab);
+        document.getElementById("optionName").innerHTML = element.dataset.tab
+  
+        const tabcontent = document.getElementsByClassName("box-options-tiles");
+        for (let i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+      const categoryBtn = document.getElementsByClassName("btn-category");
+      for (let i = 0; i < categoryBtn.length; i++) {
+        categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
+      }
+      document.getElementById(element.dataset.tab).style.display = "grid";
+      console.log("element ",element);
+      element.className += " active";
+      });
+    });
+}
+
+export function turnOptionMod() {
   const sidebar = document.getElementById("sidebar")
   const navBarMob = document.getElementById("nav-mobile")
   const optionBox = document.getElementById('option-box')
@@ -247,7 +251,7 @@ function updateNavActiveIcon(targetState) {
   }
 }
 
-function updateState(paramValue) {
+export function updateState(paramValue) {
   updateNavActiveIcon(paramValue)
   // Get the current URL
   const url = new URL(window.location.href);

@@ -1,3 +1,4 @@
+import {openOptionMenu} from './script.js'
 //Current satate obj
 const userSelect = {}
 export const presets = [{
@@ -42,8 +43,6 @@ export const presets = [{
   "Windows": "windows_04.png"
 }]
 
-
-console.log(presets[0].Brick);
 fetch('asset.json')
   .then(response => response.json())
   .then(data => {
@@ -64,12 +63,12 @@ fetch('asset.json')
         colorClick(evnt.currentTarget, evnt.currentTarget.dataset.type)
       })
     })
-    console.log("Fetch done!");
+    //console.log("Fetch done!");
   })
   .catch(error => console.error(error));
 
   window.addEventListener('DOMContentLoaded', function () {
-    console.log("Render Loaded");
+    //console.log("Render Loaded");
   })
 
   function loadImages(imgObj) {
@@ -138,6 +137,7 @@ fetch('asset.json')
 
     }
     tabBox.innerHTML += tabItems
+    openOptionMenu()
   }
 
   function loadTabContent(imgObj) {
