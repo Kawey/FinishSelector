@@ -3,6 +3,7 @@ import {presets} from './render.js'
 let currentTheme = 0
 const currentState = new URLSearchParams(window.location.search).get('state');
 //console.log("currentState",currentState);
+
 // On load, check query pram and update the DOM
 window.addEventListener('DOMContentLoaded', function () {
   //console.log('DOMContentLoaded');
@@ -20,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function () {
       
       break;
     case "summary":
-      
+      activateSummary()
       break;
     default:
       break;
@@ -102,12 +103,11 @@ window.addEventListener("load", (event) => {
       targetTheme = 4
     }
     const imgElms = document.querySelectorAll(".main-img")
-    console.log(imgElms);
 
     imgElms.forEach(element => {
       console.log(element.id.slice(3));
       const type = element.id.slice(3)
-      console.log("&& ",presets[targetTheme][type]);
+      //console.log("&& ",presets[targetTheme][type]);
       element.src = `images\\${presets[targetTheme][type]}`
     })
     document.getElementById("themeNumber").innerHTML = targetTheme+1
@@ -135,7 +135,7 @@ window.addEventListener("load", (event) => {
     const sidebar = document.getElementById("sidebar")
     sidebar.classList.remove("option-mod")
     optionBox.classList.remove("option-mod")
-    activateSummary(elementsSumMod)
+    activateSummary()
   })
 
   // close SUMMARY
@@ -263,8 +263,9 @@ export function updateState(paramValue) {
   window.history.replaceState({}, '', url);
 }
 
-function activateSummary(elements) {
+function activateSummary() {
   const modSummary = document.getElementById("box-summary");
+  const elements = document.querySelectorAll('.getSumMod')
   //btnSumLands.style.display = "none";
   modSummary.style.display = "flex";
 

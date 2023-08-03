@@ -22,6 +22,11 @@ button {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
 }
+
+p, span, div {
+  cursor: default;
+}
+
 .main-container {
   display: flex;
   width: 100%;
@@ -82,11 +87,20 @@ button {
 }
 .box-show-fp { /* item */
   border-top: 2px solid #c2c1c1;
+  color: #7A7A7A;
+  font-size: 25px;
   height: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  text-decoration: none;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.box-show-fp:hover {
+  background-color: #eee;
 }
 
 .icon-fp {
@@ -110,6 +124,8 @@ button {
 }
 .box-show-fp p {
   font-size: clamp(0.75rem, 1.4vh, 1.75rem);
+  font-size: 15px;
+  font-weight: 400;
 }
 .home-info p {
   font-weight: 400;

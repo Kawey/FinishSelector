@@ -1,7 +1,7 @@
 {
   "Tabs": [
-    "Brick",
-    "Stone",
+    "Wall #1",
+    "Wall #2",
     "Roof",
     "Filing",
     "Gate",
@@ -9,14 +9,14 @@
     "Windows"
   ],
   "Default": {
-    "Brick": {
-      "name": "brick_00",
+    "Wall #1": {
+      "name": "Brick 00",
       "color": "#e8e8e9",
       "src": "brick_00.png",
       "icon": "icon_brick_00.jpg"
     },
-    "Stone": {
-      "name": "stone_00",
+    "Wall #2": {
+      "name": "Stone 00",
       "color": "#93a5aa",
       "src": "stone_00.png",
       "icon": "icon_stone_00.jpg"
@@ -47,7 +47,7 @@
       "src": "windows_00.png"
     }
   },
-  "Brick": {
+  "Wall #1": {
     "brick1": {
       "name": "brick_01",
       "color": "#b4b4b1",
@@ -127,7 +127,7 @@
       "icon": "icon_brick_13.jpg"
     }
   },
-  "Stone": {
+  "Wall #2": {
     "stone1": {
       "name": "stone_01",
       "color": "#828283",

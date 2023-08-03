@@ -2,40 +2,40 @@ import {openOptionMenu} from './script.js'
 //Current satate obj
 const userSelect = {}
 export const presets = [{
-  "Brick": "brick_00.png",
-  "Stone": "stone_00.png",
+  "Wall #1": "brick_00.png",
+  "Wall #2": "stone_00.png",
   "Roof": "roof_00.png",
   "Filing": "filing_00.png",
   "Gate": "gate_00.png",
   "Door": "door_00.png",
   "Windows": "windows_00.png"
 },{
-  "Brick": "brick_01.png",
-  "Stone": "stone_01.png",
+  "Wall #1": "brick_01.png",
+  "Wall #2": "stone_01.png",
   "Roof": "roof_01.png",
   "Filing": "filing_01.png",
   "Gate": "gate_01.png",
   "Door": "door_01.png",
   "Windows": "windows_01.png"
 },{
-  "Brick": "brick_02.png",
-  "Stone": "stone_02.png",
+  "Wall #1": "brick_02.png",
+  "Wall #2": "stone_02.png",
   "Roof": "roof_02.png",
   "Filing": "filing_02.png",
   "Gate": "gate_02.png",
   "Door": "door_02.png",
   "Windows": "windows_02.png"
 },{
-  "Brick": "brick_03.png",
-  "Stone": "stone_03.png",
+  "Wall #1": "brick_03.png",
+  "Wall #2": "stone_03.png",
   "Roof": "roof_03.png",
   "Filing": "filing_03.png",
   "Gate": "gate_03.png",
   "Door": "door_03.png",
   "Windows": "windows_03.png"
 },{
-  "Brick": "brick_04.png",
-  "Stone": "stone_04.png",
+  "Wall #1": "brick_04.png",
+  "Wall #2": "stone_04.png",
   "Roof": "roof_04.png",
   "Filing": "filing_04.png",
   "Gate": "gate_04.png",
