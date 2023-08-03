@@ -3,7 +3,7 @@
     "Wall #1",
     "Wall #2",
     "Roof",
-    "Filing",
+    "Soffit & Fascia",
     "Gate",
     "Door",
     "Windows"
@@ -26,7 +26,7 @@
       "color": "#cbc6c3",
       "src": "roof_00.png"
     },
-    "Filing": {
+    "Soffit & Fascia": {
       "name": "White",
       "color": "#f6f2eb",
       "src": "filing_00.png"
@@ -199,7 +199,7 @@
       "src": "roof_04.png"
     }
   },
-  "Filing": {
+  "Soffit & Fascia": {
     "filing1": {
       "name": "Beige",
       "color": "#e2ddd2",
