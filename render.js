@@ -6,7 +6,7 @@ export const presets = [{
   "Wall #2": "stone_00.png",
   "Roof": "roof_00.png",
   "Soffit & Fascia": "filing_00.png",
-  "Gate": "gate_00.png",
+  "Garage Door": "gate_00.png",
   "Door": "door_00.png",
   "Windows": "windows_00.png"
 },{
@@ -14,7 +14,7 @@ export const presets = [{
   "Wall #2": "stone_01.png",
   "Roof": "roof_01.png",
   "Soffit & Fascia": "filing_01.png",
-  "Gate": "gate_01.png",
+  "Garage Door": "gate_01.png",
   "Door": "door_01.png",
   "Windows": "windows_01.png"
 },{
@@ -22,7 +22,7 @@ export const presets = [{
   "Wall #2": "stone_02.png",
   "Roof": "roof_02.png",
   "Soffit & Fascia": "filing_02.png",
-  "Gate": "gate_02.png",
+  "Garage Door": "gate_02.png",
   "Door": "door_02.png",
   "Windows": "windows_02.png"
 },{
@@ -30,7 +30,7 @@ export const presets = [{
   "Wall #2": "stone_03.png",
   "Roof": "roof_03.png",
   "Soffit & Fascia": "filing_03.png",
-  "Gate": "gate_03.png",
+  "Garage Door": "gate_03.png",
   "Door": "door_03.png",
   "Windows": "windows_03.png"
 },{
@@ -38,7 +38,7 @@ export const presets = [{
   "Wall #2": "stone_04.png",
   "Roof": "roof_04.png",
   "Soffit & Fascia": "filing_04.png",
-  "Gate": "gate_04.png",
+  "Garage Door": "gate_04.png",
   "Door": "door_01.png",
   "Windows": "windows_04.png"
 }]

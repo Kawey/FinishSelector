@@ -4,7 +4,7 @@
     "Wall #2",
     "Roof",
     "Soffit & Fascia",
-    "Gate",
+    "Garage Door",
     "Door",
     "Windows"
   ],
@@ -31,7 +31,7 @@
       "color": "#f6f2eb",
       "src": "filing_00.png"
     },
-    "Gate": {
+    "Garage Door": {
       "name": "Beige",
       "color": "#c8bbae",
       "src": "gate_00.png"
@@ -221,7 +221,7 @@
       "src": "filing_04.png"
     }
   },
-  "Gate": {
+  "Garage Door": {
     "gate1": {
       "name": "White",
       "color": "#d9d9d9",
