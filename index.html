@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>12 || Finish Selector</title>
+  <meta name="description" content="Finish Selector for canadian realestate Demo Project Acorn Colotune">
+  <title>14 || Finish Selector</title>
   <link rel="icon" type="image/x-icon" href="/ui_icons/favicon.ico">
   <link rel="stylesheet" href="style.css">
   <script type="module" src="script.js"></script>
@@ -15,12 +16,6 @@
   <!-- MODAL WINDOWS -->
   <div id="modal-info-mobile" class="modal-info-mobile">
     <div class="modal-info-content">
-    </div>
-  </div>
-  <div id="modal-FP-mobile" class="modal-FP-mobile">
-    <div class="modal-FP-content">
-      <div><img src="" alt="" srcset=""></div>
-      <div><img src="" alt="" srcset=""></div>
     </div>
   </div>
   <div class="top-container">
@@ -251,42 +246,47 @@
             <p>FLOOR PLAN</p>
           </a>
           
-          <div class="box-int-ext">
+          <div class="box-int-ext" style="visibility: hidden; display: none;">
             <div class="btns-ext-int" id="btnExterior">EXTERIOR</div>
             <div class="btns-ext-int" id="btnInterior">INTERIOR</div>
           </div>
           <div class="box-customize" style="display: flex;/* display: none; */">
             <div class="box-theme-custom" style="display: flex;/* display: none; */">
-              <button class="btn-icon-txt-color btn-themes border-active">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <button class="btn-icon-txt-color btn-themes border-active" id="btnThemes">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="icon_themes">
-                    <path id="Vector" d="M2 5V29.51L9.79 37.32L17.57 29.51V5C17.57 4.46957 17.3593 3.96086 16.9842 3.58578C16.6091 3.21071 16.1004 3 15.57 3H4C3.46957 3 2.96086 3.21071 2.58578 3.58578C2.21071 3.96086 2 4.46957 2 5Z" stroke="#60C95E" stroke-width="2" stroke-linejoin="round"/>
-                    <path id="Vector_2" d="M17.5703 29.51L31.1503 15.93C31.3363 15.7443 31.4838 15.5237 31.5844 15.2809C31.6851 15.0381 31.7369 14.7778 31.7369 14.515C31.7369 14.2522 31.6851 13.9919 31.5844 13.7491C31.4838 13.5063 31.3363 13.2858 31.1503 13.1L23.9003 5.86002C23.7146 5.67406 23.494 5.52655 23.2512 5.4259C23.0084 5.32525 22.7481 5.27344 22.4853 5.27344C22.2225 5.27344 21.9622 5.32525 21.7194 5.4259C21.4766 5.52655 21.2561 5.67406 21.0703 5.86002L17.5703 9.36002" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_3" d="M9.78906 37.3199H35.6591C36.1895 37.3199 36.6982 37.1092 37.0733 36.7341C37.4484 36.3591 37.6591 35.8503 37.6591 35.3199V24.3999C37.6591 23.8695 37.4484 23.3608 37.0733 22.9857C36.6982 22.6106 36.1895 22.3999 35.6591 22.3999H24.6591" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_4" d="M2 10.1299H17.57" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_5" d="M2 17.2598H17.57" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_6" d="M2 24.3799H17.57" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector" d="M2 5V29.51L9.79 37.32L17.57 29.51V5C17.57 4.46957 17.3593 3.96086 16.9842 3.58578C16.6091 3.21071 16.1004 3 15.57 3H4C3.46957 3 2.96086 3.21071 2.58578 3.58578C2.21071 3.96086 2 4.46957 2 5Z" stroke="#B0E4AF" stroke-width="2" stroke-linejoin="round"/>
+                    <path id="Vector_2" d="M17.5703 29.51L31.1503 15.93C31.3363 15.7443 31.4838 15.5237 31.5844 15.2809C31.6851 15.0381 31.7369 14.7778 31.7369 14.515C31.7369 14.2522 31.6851 13.9919 31.5844 13.7491C31.4838 13.5063 31.3363 13.2858 31.1503 13.1L23.9003 5.86002C23.7146 5.67406 23.494 
+                      5.52655 23.2512 5.4259C23.0084 5.32525 22.7481 5.27344 22.4853 5.27344C22.2225 5.27344 21.9622 5.32525 21.7194 5.4259C21.4766 5.52655 21.2561 5.67406 21.0703 5.86002L17.5703 9.36002" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_3" d="M9.78906 37.3199H35.6591C36.1895 37.3199 36.6982 37.1092 37.0733 36.7341C37.4484 36.3591 37.6591 35.8503 37.6591 35.3199V24.3999C37.6591 23.8695
+                      37.4484 23.3608 37.0733 22.9857C36.6982 22.6106 36.1895 22.3999 35.6591 22.3999H24.6591" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_4" d="M2 10.1299H17.57" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_5" d="M2 17.2598H17.57" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_6" d="M2 24.3799H17.57" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
                     <path id="Ellipse 30" d="M10.25 29.5C10.25 29.9142 9.91421 30.25 9.5 30.25C9.08579 30.25 8.75 29.9142 8.75 29.5C8.75 29.0858 9.08579 28.75 9.5 28.75C9.91421 28.75 10.25 29.0858 10.25 29.5Z" stroke="#60C95E" stroke-width="1.5"/>
-                    <path id="Vector_7" d="M29.8086 37.3202V22.4302" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_8" d="M21.9609 37.3199V25.1299" stroke="#60C95E" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_7" d="M29.8086 37.3202V22.4302" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_8" d="M21.9609 37.3199V25.1299" stroke="#B0E4AF" stroke-width="2" stroke-miterlimit="10"/>
                   </g>
                 </svg>
                 <span>COLOR</span>
                 <span>THEMES</span>
               </button>
-              <button class="btn-icon-txt-color btn-custom">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <button class="btn-icon-txt-color btn-custom" id="btnCustom">
+                <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="icon_custom">
-                    <path id="Vector" d="M30.36 3H5C3.89543 3 3 3.89543 3 5V15.64C3 16.7446 3.89543 17.64 5 17.64H30.36C31.4646 17.64 32.36 16.7446 32.36 15.64V5C32.36 3.89543 31.4646 3 30.36 3Z" stroke="#FFC451" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_2" d="M18.8683 25.04H16.4883C15.3837 25.04 14.4883 25.9355 14.4883 27.04V35.32C14.4883 36.4246 15.3837 37.32 16.4883 37.32H18.8683C19.9729 37.32 20.8683 36.4246 20.8683 35.32V27.04C20.8683 25.9355 19.9729 25.04 18.8683 25.04Z" stroke="#FFC451" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
-                    <path id="Vector_3" d="M17.6797 25.0398V22.9798C17.6797 22.4494 17.8904 21.9407 18.2655 21.5656C18.6405 21.1905 19.1493 20.9798 19.6797 20.9798H33.9997C34.5301 20.9798 35.0388 20.7691 35.4139 20.394C35.789 20.0189 35.9997 19.5102 35.9997 18.9798V12.3198C35.9997 11.7894 35.789 11.2807 35.4139 10.9056C35.0388 10.5305 34.5301 10.3198 33.9997 10.3198H32.3597" stroke="#FFC451" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector" d="M30.36 3H5C3.89543 3 3 3.89543 3 5V15.64C3 16.7446 3.89543 17.64 5 17.64H30.36C31.4646 17.64 32.36 16.7446 32.36 15.64V5C32.36 3.89543 31.4646 3 30.36 3Z" stroke="#FFE2A9" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_2" d="M18.8683 25.04H16.4883C15.3837 25.04 14.4883 25.9355 14.4883 27.04V35.32C14.4883 36.4246 15.3837 37.32 16.4883 37.32H18.8683C19.9729 37.32 20.8683 36.4246 20.8683 35.32V27.04C20.8683 25.9355 19.9729 25.04 18.8683 25.04Z" stroke="#FFE2A9" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
+                    <path id="Vector_3" d="M17.6797 25.0398V22.9798C17.6797 22.4494 17.8904 21.9407 18.2655 21.5656C18.6405 21.1905 19.1493 20.9798 19.6797 20.9798H33.9997C34.5301 20.9798 35.0388 20.7691 35.4139 20.394C35.789 20.0189 35.9997
+                     19.5102 35.9997 18.9798V12.3198C35.9997 11.7894 35.789 11.2807 35.4139 10.9056C35.0388 10.5305 34.5301 10.3198 33.9997 10.3198H32.3597" stroke="#FFE2A9" stroke-opacity="0.5" stroke-width="2" stroke-miterlimit="10"/>
                   </g>
                 </svg>
                 <span>CUSTOM</span>
                 <span>FACADE</span>
               </button>
             </div>
-            <div class="box-category-btns" id="exterior-tab" style="display: flex;/* display: none; */"></div>
+            <div class="box-category-btns" id="theme-tab" style="display: flex;/* display: none; */">
+            </div>
+            <div class="box-category-btns" id="exterior-tab" style="display: none;/* display: none; */"></div>
             <div class="box-category-btns" id="interior-tab">
               <div class="btn-category">Benchtop</div>
               <div class="btn-category">Cabinet Base</div>

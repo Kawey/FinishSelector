@@ -1,4 +1,5 @@
 import {openOptionMenu} from './script.js'
+import {eventPreset} from './script.js'
 //Current satate obj
 const userSelect = {}
 export const presets = [{
@@ -53,6 +54,7 @@ fetch('asset.json')
     loadImages(data) //load img tags
     loadCategoryMenu(data)//load tab link buttons
     loadTabContent(data)
+    loadThemeTabContent(presets)
     //loadSummary(data)
     //activateDefaultColors(data)
     //document.getElementById("defaultOpen").click();
@@ -67,30 +69,43 @@ fetch('asset.json')
   })
   .catch(error => console.error(error));
 
-  window.addEventListener('DOMContentLoaded', function () {
-    //console.log("Render Loaded");
-  })
+window.addEventListener('DOMContentLoaded', function () {
+  //console.log("Render Loaded");
+})
 
-  function loadImages(imgObj) {
-    const importTabs = imgObj.Tabs;
-    //const importDefaultObj = imgObj.Default;
-    const imgBox = document.getElementById('imagebox')
-    imgBox.innerHTML += `<img class="layers" src="images\\${imgObj.BG}" alt="BG"></img>`
-    //Default options loop imgObj.Default
-    let imgItems = '';
-    
-    // create main IMG elements
-    for (let i = 0; i < importTabs.length; i++) {
-      const tab = importTabs[i];
-      const imgsrc = getDefaultImg(imgObj.Default[tab], "src")
-      imgItems += `<img class="layers main-img" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
-      addImg2DOM(imgObj[tab], tab)
-    }
-    imgBox.innerHTML += imgItems
-    for (let i = 0; i < importTabs.length; i++) {
-      const tab = importTabs[i];
-    }
+function loadThemeTabContent(themes) {
+  const ThemeBox = document.getElementById('theme-tab')
+  themes.forEach((theme,index) => {
+    const div = document.createElement("div")
+    div.classList.add("btn-category")
+    div.classList.add("btn-theme")
+    div.dataset.theme = index;
+    div.innerHTML = `Preset #${index+1}`
+    ThemeBox.appendChild(div)
+  })
+  eventPreset()
+}
+
+function loadImages(imgObj) {
+  const importTabs = imgObj.Tabs;
+  //const importDefaultObj = imgObj.Default;
+  const imgBox = document.getElementById('imagebox')
+  imgBox.innerHTML += `<img class="layers" src="images\\${imgObj.BG}" alt="BG"></img>`
+  //Default options loop imgObj.Default
+  let imgItems = '';
+  
+  // create main IMG elements
+  for (let i = 0; i < importTabs.length; i++) {
+    const tab = importTabs[i];
+    const imgsrc = getDefaultImg(imgObj.Default[tab], "src")
+    imgItems += `<img class="layers main-img" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
+    addImg2DOM(imgObj[tab], tab)
   }
+  imgBox.innerHTML += imgItems
+  for (let i = 0; i < importTabs.length; i++) {
+    const tab = importTabs[i];
+  }
+}
 
   function getDefaultImg(obj, target) {
     //console.log("fuunc");
@@ -191,10 +206,7 @@ fetch('asset.json')
       }
       div.innerHTML += tabItems
       allTabsDiv.appendChild(div)
-      
-      
     }
-    
   }
 
   function colorClick(evt, itemName) {

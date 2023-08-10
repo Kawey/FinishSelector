@@ -81,39 +81,6 @@ window.addEventListener("load", (event) => {
       BUTTONS EVENT LISTENERS
   */
 
-  //Switch presets
-  const presetArrowBtns = document.querySelectorAll(".theme")
-  presetArrowBtns.forEach(element => {
-    element.addEventListener('click', (arrow) => {
-      console.log("this",arrow.currentTarget.id.split('-')[1]);
-      const direction = arrow.currentTarget.id.split('-')[1]
-      if (direction === "right") {
-        switchPreset(currentTheme+1)
-      } else {
-        switchPreset(currentTheme-1)
-      }
-    });
-  });
-
-  function switchPreset(targetTheme) {
-    if (targetTheme <0) {
-      targetTheme = 0
-      return
-    } else if (targetTheme >4) {
-      targetTheme = 4
-    }
-    const imgElms = document.querySelectorAll(".main-img")
-
-    imgElms.forEach(element => {
-      console.log(element.id.slice(3));
-      const type = element.id.slice(3)
-      //console.log("&& ",presets[targetTheme][type]);
-      element.src = `images\\${presets[targetTheme][type]}`
-    })
-    document.getElementById("themeNumber").innerHTML = targetTheme+1
-    currentTheme = targetTheme
-  }
-
   //Switch Interior / Exterior
   extIntBtns.forEach(element => {
     element.addEventListener('click', () => {
@@ -129,28 +96,36 @@ window.addEventListener("load", (event) => {
     });
   });
 
-  // activate SUMMARY in landscape mode
-  btnSumLands.addEventListener("click", () => {
-    updateState("summary")
-    const sidebar = document.getElementById("sidebar")
-    sidebar.classList.remove("option-mod")
-    optionBox.classList.remove("option-mod")
-    activateSummary()
-  })
-
-  // close SUMMARY
-  btnsCloseSum.forEach(btn => {
-    btn.addEventListener('click', () => { 
-      elementsSumMod.forEach(element => {
-        element.classList.remove("summary-mod");
-      })
-      updateState("category")
-      modSummary.style.display = "none";
-      modCategory.style.display = "flex";
-    })
-  })
-
-
+  const btnsThemeCustom = document.querySelectorAll(".btn-icon-txt-color")
+  const tabTheme = document.getElementById("theme-tab")
+  const btnCustomFacade = document.getElementById("btnCustom")
+  const btnColorThemes = document.getElementById("btnThemes")
+  btnsThemeCustom.forEach(element => {
+  element.addEventListener('click', ()=> {
+    console.log("element.id", element.id, "active",element.classList.contains('border-active') );
+    if (element.id == "btnThemes") {
+      if (!element.classList.contains('border-active')) {
+        console.log('activate theme');
+        closeOptionsMenu()
+        btnCustomFacade.classList.remove("border-active")
+        
+        btnColorThemes.classList.add("border-active")
+        
+        tabExterior.style.display = "none"
+        tabTheme.style.display = "flex"
+      }
+    } else {
+      if (!element.classList.contains('border-active')) {
+        console.log('The btnCustom ');
+        btnColorThemes.classList.remove("border-active")
+        
+        btnCustomFacade.classList.add("border-active")
+        tabExterior.style.display = "flex"
+        tabTheme.style.display = "none"
+      }
+    }
+  });
+});
 
   // close OPTION
   btnCloseOptions.addEventListener('click', () => {
@@ -181,15 +156,61 @@ window.addEventListener("load", (event) => {
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function (event) {
-    console.log(event.target.parentElement);
     if (event.target == modalInfo) {
       updateState("category")
       modalInfo.style.display = "none";
     }
   }
+
+  // activate SUMMARY in landscape mode
+  btnSumLands.addEventListener("click", () => {
+    updateState("summary")
+    const sidebar = document.getElementById("sidebar")
+    sidebar.classList.remove("option-mod")
+    optionBox.classList.remove("option-mod")
+    activateSummary()
+  })
+
+  // close SUMMARY
+  btnsCloseSum.forEach(btn => {
+    btn.addEventListener('click', () => { 
+      elementsSumMod.forEach(element => {
+        element.classList.remove("summary-mod");
+      })
+      updateState("category")
+      modSummary.style.display = "none";
+      modCategory.style.display = "flex";
+    })
+  })
 }); //load end
 
-export function openOptionMenu(params) {
+export function eventPreset() {
+  const themeBtns = document.querySelectorAll('.btn-theme')
+  themeBtns.forEach((element,index) => {
+    element.addEventListener('click', (btn) => {
+      switchPreset(btn.target.dataset.theme)
+    });
+  });
+}
+
+function switchPreset(targetTheme) {
+  if (targetTheme <0) {
+    targetTheme = 0
+    return
+  } else if (targetTheme >4) {
+    targetTheme = 4
+  }
+  const imgElms = document.querySelectorAll(".main-img")
+
+  imgElms.forEach(element => {
+    console.log(element.id.slice(3));
+    const type = element.id.slice(3)
+    //console.log("&& ",presets[targetTheme][type]);
+    element.src = `images\\${presets[targetTheme][type]}`
+  })
+}
+
+export function openOptionMenu() {
     // open OPTIONS
     const categoryBtns = document.querySelectorAll('.btn-category')
     categoryBtns.forEach((element,index) => {
@@ -212,6 +233,23 @@ export function openOptionMenu(params) {
       element.className += " active";
       });
     });
+}
+
+function closeOptionsMenu() {
+  updateState("category")
+    const sidebar = document.getElementById("sidebar")
+    const navBarMob = document.getElementById("nav-mobile")
+    const categoryBtn = document.getElementsByClassName("btn-category");
+    for (let i = 0; i < categoryBtn.length; i++) {
+      categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
+    }
+    document.querySelectorAll(".option-mod").forEach((item)=> {
+      item.classList.remove("option-mod")
+    })
+    //sidebar.classList.remove("option-mod")
+    //.classList.remove("option-mod")
+    //navBarMob.classList.remove("option-mod")
+  
 }
 
 export function turnOptionMod() {
