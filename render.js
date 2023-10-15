@@ -74,7 +74,7 @@ window.addEventListener('DOMContentLoaded', function () {
 })
 
 function loadThemeTabContent(themes) {
-  const ThemeBox = document.getElementById('theme-tab')
+  const ThemeBox = document.getElementById('tabPanel-1')
   themes.forEach((theme,index) => {
     const div = document.createElement("div")
     div.classList.add("btn-category")
@@ -142,7 +142,9 @@ function loadImages(imgObj) {
 
   function loadCategoryMenu(imgObj) {
     const importTabs = imgObj.Tabs;
-    const tabBox = document.getElementById('exterior-tab')
+    //const tabBox = document.getElementById('exterior-tab')
+    const tabBox = document.getElementById('tabPanel-2')
+    console.log(tabBox);
   
     let tabItems = '';
     for (let i = 0; i < importTabs.length; i++) {

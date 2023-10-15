@@ -197,8 +197,6 @@ padding-left: 5px;
 font-weight: 500;
 }
 
-
-
 .box-category {
   flex-shrink: 0;
   flex-grow: 1;
@@ -206,8 +204,6 @@ font-weight: 500;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
-
 
 .box-customize {
   display: flex;
@@ -221,13 +217,40 @@ font-weight: 500;
   padding: 16px 16px 0 16px;
 }
 
-.box-theme-custom {
+.tab-list {
   display: flex;
   justify-content: stretch;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.btn-icon-txt-color{
+[role="tablist"] {
+  display: flex;
+  /* width: fit-content; */
+  position: relative;
+  /* margin-block: 3rem; */
+  border-bottom: 1px solid hsl(0 0% 30% / 0.5);
+}
+
+[role="tablist"]::after {
+  content: "";
+  position: absolute;
+  background: #ff0000;
+  opacity: 0.8;
+  height: 3px;
+  width: 100%;
+  /* // transform: translateX(var(--_left)) scaleX(var(--_width)); */
+  /* translate: var(--_left) 50; */
+  translate: var(--_left, 0) 0;
+
+  scale: var(--_width, 0.125) 1;
+  bottom: 0;
+  left: 0;
+  transition: translate 300ms ease-in-out, scale 300ms ease-in-out;
+  /* // transition: translate 2500ms ease-in-out, scale 2500ms ease-in-out; */
+  transform-origin: left;
+}
+
+.tab-exterior{
   display: flex;
   flex-direction: column;
   width: 50%;
@@ -249,18 +272,17 @@ font-weight: 500;
   text-align: center;
   transition: all 200ms;
 
-  border-bottom: 1px solid #b8b8b8;
+  /* border-bottom: 1px solid #b8b8b8; */
 }
 
-
-
-.btn-icon-txt-color.border-active{
+/* remove */
+/* .tab-exterior.border-active{
   border-bottom: 2px solid #4e4e4e;
-}
+} */
 
-.btn-icon-txt-color svg{margin-bottom: 8px;}
+.tab-exterior svg{margin-bottom: 8px;}
 
-.btn-icon-txt-color.border-active span{
+.tab-exterior.border-active span{
   color: #7A7A7A;
 }
 
@@ -272,15 +294,15 @@ font-weight: 500;
   stroke: #60C95E;
 }
 
-.btn-icon-txt-color:hover {
+.tab-exterior:hover {
   background-color: #EAEAEA;
 }
-.btn-icon-txt-color:active {
+.tab-exterior:active {
   background-color: #dadada;
 }
 
 .box-category-btns {
-  display: none;
+  /* display: flex; */
   flex-direction: column;
   /* flex: 1; 
   flex-shrink: 1;*/
@@ -769,9 +791,9 @@ width: 50px;
       display: none;
     }
 
-    .box-customize {
+    /* .box-customize {
 
-    }
+    } */
 
     .option-box {
       width: 100%;

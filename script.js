@@ -50,7 +50,6 @@ window.addEventListener("load", (event) => {
   const tabInterior = document.getElementById("interior-tab")
   const tabExterior = document.getElementById("exterior-tab")
   const categoryBtns = document.querySelectorAll('.btn-category')
-  console.log("categoryBtns", categoryBtns.length);
   const btnCloseSumLands = document.getElementById("btnCloseSumLands")
 
   const elementsSumMod = document.querySelectorAll('.getSumMod')
@@ -66,6 +65,12 @@ window.addEventListener("load", (event) => {
   const btnSumLands = document.getElementById("btnSumLands");
 
   const btnCloseFPLands = document.getElementById("btnCloseFPLands");
+
+  // TABS SYSTEM
+  const tabsContainer = document.querySelector("[role=tablist]");
+  const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
+  const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
+  console.log(tabsContainer, tabButtons, tabPanels);
 
   // Get NAV Mobile buttons
   // btnCustomize need add in future
@@ -96,36 +101,48 @@ window.addEventListener("load", (event) => {
     });
   });
 
+  tabsContainer.addEventListener("click", (e) => {
+    const clickedTab = e.target.closest("button");
+    const currentTab = tabsContainer.querySelector('[aria-selected="true"]');
+    console.log(currentTab);
+    if (!clickedTab || clickedTab === currentTab) return;
+  
+    switchTab(clickedTab, tabsContainer);
+  });
+
+  //OLD switch tab panels remove
   const btnsThemeCustom = document.querySelectorAll(".btn-icon-txt-color")
   const tabTheme = document.getElementById("theme-tab")
   const btnCustomFacade = document.getElementById("btnCustom")
   const btnColorThemes = document.getElementById("btnThemes")
-  btnsThemeCustom.forEach(element => {
-  element.addEventListener('click', ()=> {
-    console.log("element.id", element.id, "active",element.classList.contains('border-active') );
-    if (element.id == "btnThemes") {
-      if (!element.classList.contains('border-active')) {
-        console.log('activate theme');
-        closeOptionsMenu()
-        btnCustomFacade.classList.remove("border-active")
+
+  //OLD switch tab panels remove
+//   btnsThemeCustom.forEach(element => {
+//   element.addEventListener('click', ()=> {
+//     console.log("element.id", element.id, "active",element.classList.contains('border-active') );
+//     if (element.id == "btnThemes") {
+//       if (!element.classList.contains('border-active')) {
+//         console.log('activate theme');
+//         closeOptionsMenu()
+//         btnCustomFacade.classList.remove("border-active")
         
-        btnColorThemes.classList.add("border-active")
+//         btnColorThemes.classList.add("border-active")
         
-        tabExterior.style.display = "none"
-        tabTheme.style.display = "flex"
-      }
-    } else {
-      if (!element.classList.contains('border-active')) {
-        console.log('The btnCustom ');
-        btnColorThemes.classList.remove("border-active")
+//         tabExterior.style.display = "none"
+//         tabTheme.style.display = "flex"
+//       }
+//     } else {
+//       if (!element.classList.contains('border-active')) {
+//         console.log('The btnCustom ');
+//         btnColorThemes.classList.remove("border-active")
         
-        btnCustomFacade.classList.add("border-active")
-        tabExterior.style.display = "flex"
-        tabTheme.style.display = "none"
-      }
-    }
-  });
-});
+//         btnCustomFacade.classList.add("border-active")
+//         tabExterior.style.display = "flex"
+//         tabTheme.style.display = "none"
+//       }
+//     }
+//   });
+// });
 
   // close OPTION
   btnCloseOptions.addEventListener('click', () => {
@@ -183,6 +200,32 @@ window.addEventListener("load", (event) => {
     })
   })
 }); //load end
+
+function switchTab(newTab, tabsContainer) {
+  console.log("tabsContainer", tabsContainer);
+  const oldTab = tabsContainer.querySelector('[aria-selected="true"]')
+  const activePanelId = newTab.getAttribute("aria-controls");
+  const activePanel = tabsContainer.nextElementSibling.querySelector(
+    "#" + CSS.escape(activePanelId)
+  );
+  console.log("activePanel", activePanel);
+  const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
+  tabButtons.forEach((button) => {
+    button.setAttribute("aria-selected", false);
+    button.setAttribute("tabindex", "-1");
+  });
+  const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
+  tabPanels.forEach((panel) => {
+    panel.setAttribute("hidden", true);
+  });
+
+  activePanel.removeAttribute("hidden", false);
+
+  newTab.setAttribute("aria-selected", true);
+  newTab.setAttribute("tabindex", "0");
+  newTab.focus();
+  moveIndicator(oldTab, newTab);
+}
 
 export function eventPreset() {
   const themeBtns = document.querySelectorAll('.btn-theme')
