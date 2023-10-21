@@ -24,8 +24,12 @@ button {
   font-style: normal;
 }
 
-p, span, div {
+ p, span, div {
   cursor: default;
+} 
+
+button span {
+  cursor: pointer;
 }
 
 .main-container {
@@ -234,7 +238,7 @@ font-weight: 500;
 [role="tablist"]::after {
   content: "";
   position: absolute;
-  background: #ff0000;
+  background: #474747;
   opacity: 0.8;
   height: 3px;
   width: 100%;
@@ -242,12 +246,51 @@ font-weight: 500;
   /* translate: var(--_left) 50; */
   translate: var(--_left, 0) 0;
 
-  scale: var(--_width, 0.125) 1;
+  scale: var(--_width, 0.5) 1;
   bottom: 0;
   left: 0;
   transition: translate 300ms ease-in-out, scale 300ms ease-in-out;
   /* // transition: translate 2500ms ease-in-out, scale 2500ms ease-in-out; */
   transform-origin: left;
+}
+
+[role="tab"] {
+  color: #fff;
+  background: lightblue;
+  background: transparent;
+  /* padding: 1em 2em; */
+  border: 0;
+  font: inherit;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+[role="tab"]:hover {
+  opacity: 1;
+}
+
+[role="tab"][aria-selected="true"] {
+  opacity: 1;
+  color: #7A7A7A;
+}
+
+/* Tab btns active state */
+[role="tab"][aria-selected="true"].btn-themes path {
+  stroke: #60C95E;
+}
+
+[role="tab"][aria-selected="true"].btn-custom path {
+  stroke: #ffaa00;
+}
+
+[role="tabpanelexterior"] {
+  display: flex;
+}
+
+[hidden]{
+  display:none;
 }
 
 .tab-exterior{
@@ -282,18 +325,6 @@ font-weight: 500;
 
 .tab-exterior svg{margin-bottom: 8px;}
 
-.tab-exterior.border-active span{
-  color: #7A7A7A;
-}
-
-.btn-custom.border-active path{
-  stroke: #ffaa00;
-}
-
-.btn-themes.border-active path{
-  stroke: #60C95E;
-}
-
 .tab-exterior:hover {
   background-color: #EAEAEA;
 }
@@ -303,6 +334,18 @@ font-weight: 500;
 
 .box-category-btns {
   /* display: flex; */
+  flex-direction: column;
+  /* flex: 1; 
+  flex-shrink: 1;*/
+  flex-grow: 1;
+  height: 100px;
+  margin-top: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.tab-panels-ext {
+  display: flex; 
   flex-direction: column;
   /* flex: 1; 
   flex-shrink: 1;*/

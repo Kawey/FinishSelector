@@ -205,6 +205,7 @@ function switchTab(newTab, tabsContainer) {
   console.log("tabsContainer", tabsContainer);
   const oldTab = tabsContainer.querySelector('[aria-selected="true"]')
   const activePanelId = newTab.getAttribute("aria-controls");
+  console.log("activePanelId", activePanelId," tabsContainer",tabsContainer.nextElementSibling);
   const activePanel = tabsContainer.nextElementSibling.querySelector(
     "#" + CSS.escape(activePanelId)
   );
@@ -224,7 +225,7 @@ function switchTab(newTab, tabsContainer) {
   newTab.setAttribute("aria-selected", true);
   newTab.setAttribute("tabindex", "0");
   newTab.focus();
-  moveIndicator(oldTab, newTab);
+  moveIndicator(oldTab, newTab, tabsContainer);
 }
 
 export function eventPreset() {
@@ -251,6 +252,29 @@ function switchPreset(targetTheme) {
     //console.log("&& ",presets[targetTheme][type]);
     element.src = `images\\${presets[targetTheme][type]}`
   })
+}
+
+function moveIndicator(oldTab, newTab, tabsContainer) {
+  const newTabPosition = oldTab.compareDocumentPosition(newTab)
+  const newTabWidth = newTab.offsetWidth / tabsContainer.offsetWidth
+  let transitionWidth;
+
+  //if the new tab is to the right
+  if (newTabPosition === 4) {
+    transitionWidth = newTab.offsetLeft + newTab.offsetWidth - oldTab.offsetLeft;
+  } else { //if the new tab is to the left
+    transitionWidth = oldTab.offsetLeft + newTab.offsetWidth - newTab.offsetLeft
+    tabsContainer.style.setProperty('--_left', newTab.offsetLeft+ "px");
+  }
+
+  //tabsContainer.style.setProperty('--_left', newTab.offsetLeft+ "px");
+  tabsContainer.style.setProperty('--_width', transitionWidth / tabsContainer.offsetWidth);
+
+  setTimeout(()=> {
+    tabsContainer.style.setProperty('--_left', newTab.offsetLeft+ "px");
+    tabsContainer.style.setProperty('--_width', newTabWidth);
+  },250)
+  //tabsContainer.style.setProperty('--_width', newTabWidth);
 }
 
 export function openOptionMenu() {
