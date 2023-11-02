@@ -1,12 +1,10 @@
-//import {sayHi} from './render.js';
 import {presets} from './render.js'
+
 let currentTheme = 0
 const currentState = new URLSearchParams(window.location.search).get('state');
 //console.log("currentState",currentState);
 
-// On load, check query pram and update the DOM
-window.addEventListener('DOMContentLoaded', function () {
-  //console.log('DOMContentLoaded');
+// On load, check query pram and update the DOM 
   switch (currentState) {
     case "category":
       
@@ -26,9 +24,6 @@ window.addEventListener('DOMContentLoaded', function () {
     default:
       break;
   }
-  //console.log(urlParams);
-  //document.getElementById('paramValue').textContent = currentParamValue || 'None';
-});
 
 function getAllQueryParameters() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -41,8 +36,6 @@ function getAllQueryParameters() {
   return queryParams;
 }
 
-window.addEventListener("load", (event) => {
-  //console.log('Loaded');
   const btnCloseOptions = document.getElementById("btnCloseOption");
   const optionBox = document.getElementById('option-box')
 
@@ -199,7 +192,6 @@ window.addEventListener("load", (event) => {
       modCategory.style.display = "flex";
     })
   })
-}); //load end
 
 function switchTab(newTab, tabsContainer) {
   console.log("tabsContainer", tabsContainer);
