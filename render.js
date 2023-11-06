@@ -74,12 +74,16 @@ window.addEventListener('DOMContentLoaded', function () {
 })
 
 function loadThemeTabContent(themes) {
-  const ThemeBox = document.getElementById('tabPanel-1')
+  const ThemeBox = document.getElementById('tabPanelThemes')
   themes.forEach((theme,index) => {
     const div = document.createElement("div")
+    if (index===0) {
+      div.setAttribute("aria-checked", true);
+    }
     div.classList.add("btn-category")
     div.classList.add("btn-theme")
     div.dataset.theme = index;
+    div.setAttribute("role", "option")
     div.innerHTML = `Preset #${index+1}`
     ThemeBox.appendChild(div)
   })
@@ -144,7 +148,6 @@ function loadImages(imgObj) {
     const importTabs = imgObj.Tabs;
     //const tabBox = document.getElementById('exterior-tab')
     const tabBox = document.getElementById('tabPanel-2')
-    console.log(tabBox);
   
     let tabItems = '';
     for (let i = 0; i < importTabs.length; i++) {

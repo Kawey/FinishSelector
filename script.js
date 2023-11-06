@@ -1,29 +1,66 @@
 import {presets} from './render.js'
 
-let currentTheme = 0
+const btnCloseOptions = document.getElementById("btnCloseOption");
+const optionBox = document.getElementById('option-box')
+
+const extIntBtns = document.querySelectorAll('.btns-ext-int')
+const tabInterior = document.getElementById("interior-tab")
+const tabExterior = document.getElementById("exterior-tab")
+const categoryBtns = document.querySelectorAll('.btn-category')
+const btnCloseSumLands = document.getElementById("btnCloseSumLands")
+
+const elementsSumMod = document.querySelectorAll('.getSumMod')
+const elmsFooterHeader = document.querySelectorAll('.get-footer-header')
+
+const modalInfo = document.getElementById("modal-info-mobile");
+const modalFP = document.getElementById("modal-FP-mobile");
+const modSummary = document.getElementById("box-summary");
+const modCategory = document.getElementById("box-category");
+
+const infoBoxAlbum = document.getElementById("info-box-album");
+
+const btnSumLands = document.getElementById("btnSumLands");
+
+const btnCloseFPLands = document.getElementById("btnCloseFPLands");
+
+// TABS SYSTEM
+const tabsContainer = document.querySelector("[role=tablist]");
+const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
+const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
+
+let themesContainer = document.getElementById("tabPanelThemes");
+
+// Get NAV Mobile buttons
+// btnCustomize need add in future
+const btnInfo = document.getElementById("btnInfo");
+const btnFP = document.getElementById("btnFP");
+const btnSummary = document.getElementById("btnSummary");
+//btnReset need add in future
+const btnCloseSumMob = document.getElementById("btnCloseSumMob");
+const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
+
+let currentTheme = 0 //remove?
 const currentState = new URLSearchParams(window.location.search).get('state');
-//console.log("currentState",currentState);
 
 // On load, check query pram and update the DOM 
-  switch (currentState) {
-    case "category":
-      
-      break;
-    case "options":
-      turnOptionMod()
-      break;
-    case "info":
-      
-      break;
-    case "floorplan":
-      
-      break;
-    case "summary":
-      activateSummary()
-      break;
-    default:
-      break;
-  }
+switch (currentState) {
+  case "category":
+    break;
+  case "options":
+    turnOptionMod()
+    break;
+  case "info":
+    
+    break;
+  case "floorplan":
+    
+    break;
+  case "summary":
+    activateSummary()
+    break;
+  default:
+    break;
+}
 
 function getAllQueryParameters() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -36,168 +73,93 @@ function getAllQueryParameters() {
   return queryParams;
 }
 
-  const btnCloseOptions = document.getElementById("btnCloseOption");
-  const optionBox = document.getElementById('option-box')
+/*
+    BUTTONS EVENT LISTENERS
+*/
 
-  const extIntBtns = document.querySelectorAll('.btns-ext-int')
-  const tabInterior = document.getElementById("interior-tab")
-  const tabExterior = document.getElementById("exterior-tab")
-  const categoryBtns = document.querySelectorAll('.btn-category')
-  const btnCloseSumLands = document.getElementById("btnCloseSumLands")
-
-  const elementsSumMod = document.querySelectorAll('.getSumMod')
-  const elmsFooterHeader = document.querySelectorAll('.get-footer-header')
-
-  const modalInfo = document.getElementById("modal-info-mobile");
-  const modalFP = document.getElementById("modal-FP-mobile");
-  const modSummary = document.getElementById("box-summary");
-  const modCategory = document.getElementById("box-category");
-
-  const infoBoxAlbum = document.getElementById("info-box-album");
-
-  const btnSumLands = document.getElementById("btnSumLands");
-
-  const btnCloseFPLands = document.getElementById("btnCloseFPLands");
-
-  // TABS SYSTEM
-  const tabsContainer = document.querySelector("[role=tablist]");
-  const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
-  const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
-  console.log(tabsContainer, tabButtons, tabPanels);
-
-  // Get NAV Mobile buttons
-  // btnCustomize need add in future
-  const btnInfo = document.getElementById("btnInfo");
-  const btnFP = document.getElementById("btnFP");
-  const btnSummary = document.getElementById("btnSummary");
-  //btnReset need add in future
-  const btnCloseSumMob = document.getElementById("btnCloseSumMob");
-  //console.log('Element clicked:', extIntBtns);
-  const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
-
-  /*
-      BUTTONS EVENT LISTENERS
-  */
-
-  //Switch Interior / Exterior
-  extIntBtns.forEach(element => {
-    element.addEventListener('click', () => {
-      // Your event handler code goes here
-      console.log('intext Element clicked:', element);
-      if (element.id == "btnInterior") {
-        tabExterior.style.display = "none"
-        tabInterior.style.display = "flex"
-      } else {
-        tabExterior.style.display = "flex"
-        tabInterior.style.display = "none"
-      }
-    });
+//Switch Interior / Exterior
+extIntBtns.forEach(element => {
+  element.addEventListener('click', () => {
+    // Your event handler code goes here
+    console.log('intext Element clicked:', element);
+    if (element.id == "btnInterior") {
+      tabExterior.style.display = "none"
+      tabInterior.style.display = "flex"
+    } else {
+      tabExterior.style.display = "flex"
+      tabInterior.style.display = "none"
+    }
   });
+});
 
-  tabsContainer.addEventListener("click", (e) => {
-    const clickedTab = e.target.closest("button");
-    const currentTab = tabsContainer.querySelector('[aria-selected="true"]');
-    console.log(currentTab);
-    if (!clickedTab || clickedTab === currentTab) return;
-  
-    switchTab(clickedTab, tabsContainer);
-  });
+tabsContainer.addEventListener("click", (e) => {
+  const clickedTab = e.target.closest("button");
+  const currentTab = tabsContainer.querySelector('[aria-selected="true"]');
+  console.log(currentTab);
+  if (!clickedTab || clickedTab === currentTab) return;
 
-  //OLD switch tab panels remove
-  const btnsThemeCustom = document.querySelectorAll(".btn-icon-txt-color")
-  const tabTheme = document.getElementById("theme-tab")
-  const btnCustomFacade = document.getElementById("btnCustom")
-  const btnColorThemes = document.getElementById("btnThemes")
+  switchTab(clickedTab);
+});
 
-  //OLD switch tab panels remove
-//   btnsThemeCustom.forEach(element => {
-//   element.addEventListener('click', ()=> {
-//     console.log("element.id", element.id, "active",element.classList.contains('border-active') );
-//     if (element.id == "btnThemes") {
-//       if (!element.classList.contains('border-active')) {
-//         console.log('activate theme');
-//         closeOptionsMenu()
-//         btnCustomFacade.classList.remove("border-active")
-        
-//         btnColorThemes.classList.add("border-active")
-        
-//         tabExterior.style.display = "none"
-//         tabTheme.style.display = "flex"
-//       }
-//     } else {
-//       if (!element.classList.contains('border-active')) {
-//         console.log('The btnCustom ');
-//         btnColorThemes.classList.remove("border-active")
-        
-//         btnCustomFacade.classList.add("border-active")
-//         tabExterior.style.display = "flex"
-//         tabTheme.style.display = "none"
-//       }
-//     }
-//   });
-// });
+// close OPTION
+btnCloseOptions.addEventListener('click', () => {
+  updateState("category")
+  const sidebar = document.getElementById("sidebar")
+  const navBarMob = document.getElementById("nav-mobile")
+  const categoryBtn = document.getElementsByClassName("btn-category");
+  for (let i = 0; i < categoryBtn.length; i++) {
+    categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
+  }
+  sidebar.classList.remove("option-mod")
+  optionBox.classList.remove("option-mod")
+  navBarMob.classList.remove("option-mod")
+})
 
-  // close OPTION
-  btnCloseOptions.addEventListener('click', () => {
+// avtivate INFO mode nav-bar
+btnInfo.onclick = function () {
+  updateState("info")
+  modalInfo.style.display = "flex";
+}
+
+btnSummary.onclick = function () {
+  updateState("summary")
+  activateSummary(elementsSumMod)
+  modCategory.style.display = "none";
+  modSummary.style.display = "flex";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modalInfo) {
     updateState("category")
-    const sidebar = document.getElementById("sidebar")
-    const navBarMob = document.getElementById("nav-mobile")
-    const categoryBtn = document.getElementsByClassName("btn-category");
-    for (let i = 0; i < categoryBtn.length; i++) {
-      categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
-    }
-    sidebar.classList.remove("option-mod")
-    optionBox.classList.remove("option-mod")
-    navBarMob.classList.remove("option-mod")
-  })
-
-  // avtivate INFO mode nav-bar
-  btnInfo.onclick = function () {
-    updateState("info")
-    modalInfo.style.display = "flex";
+    modalInfo.style.display = "none";
   }
+}
 
-  btnSummary.onclick = function () {
-    updateState("summary")
-    activateSummary(elementsSumMod)
-    modCategory.style.display = "none";
-    modSummary.style.display = "flex";
-  }
+// activate SUMMARY in landscape mode
+btnSumLands.addEventListener("click", () => {
+  updateState("summary")
+  const sidebar = document.getElementById("sidebar")
+  sidebar.classList.remove("option-mod")
+  optionBox.classList.remove("option-mod")
+  activateSummary()
+})
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function (event) {
-    if (event.target == modalInfo) {
-      updateState("category")
-      modalInfo.style.display = "none";
-    }
-  }
-
-  // activate SUMMARY in landscape mode
-  btnSumLands.addEventListener("click", () => {
-    updateState("summary")
-    const sidebar = document.getElementById("sidebar")
-    sidebar.classList.remove("option-mod")
-    optionBox.classList.remove("option-mod")
-    activateSummary()
-  })
-
-  // close SUMMARY
-  btnsCloseSum.forEach(btn => {
-    btn.addEventListener('click', () => { 
-      elementsSumMod.forEach(element => {
-        element.classList.remove("summary-mod");
-      })
-      updateState("category")
-      modSummary.style.display = "none";
-      modCategory.style.display = "flex";
+// close SUMMARY
+btnsCloseSum.forEach(btn => {
+  btn.addEventListener('click', () => { 
+    elementsSumMod.forEach(element => {
+      element.classList.remove("summary-mod");
     })
+    updateState("category")
+    modSummary.style.display = "none";
+    modCategory.style.display = "flex";
   })
+})
 
-function switchTab(newTab, tabsContainer) {
-  console.log("tabsContainer", tabsContainer);
+function switchTab(newTab) {
   const oldTab = tabsContainer.querySelector('[aria-selected="true"]')
   const activePanelId = newTab.getAttribute("aria-controls");
-  console.log("activePanelId", activePanelId," tabsContainer",tabsContainer.nextElementSibling);
   const activePanel = tabsContainer.nextElementSibling.querySelector(
     "#" + CSS.escape(activePanelId)
   );
@@ -207,7 +169,6 @@ function switchTab(newTab, tabsContainer) {
     button.setAttribute("aria-selected", false);
     button.setAttribute("tabindex", "-1");
   });
-  const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
   tabPanels.forEach((panel) => {
     panel.setAttribute("hidden", true);
   });
@@ -224,25 +185,29 @@ export function eventPreset() {
   const themeBtns = document.querySelectorAll('.btn-theme')
   themeBtns.forEach((element,index) => {
     element.addEventListener('click', (btn) => {
-      switchPreset(btn.target.dataset.theme)
+      console.log(btn.target.dataset.theme);
+      switchPreset(btn.target,btn.target.dataset.theme)
     });
   });
 }
 
-function switchPreset(targetTheme) {
-  if (targetTheme <0) {
-    targetTheme = 0
+function switchPreset(clickedBtn, themeNum) {
+  console.log("themesContainer",themesContainer);
+  console.log("tabsContainer",tabsContainer);
+  const oldThemeBtn = themesContainer.querySelector('[aria-checked="true"]')
+  oldThemeBtn.setAttribute("aria-checked", false)
+  clickedBtn.setAttribute("aria-checked", true)
+  if (themeNum <0) {
+    themeNum = 0
     return
-  } else if (targetTheme >4) {
-    targetTheme = 4
+  } else if (themeNum >4) {
+    themeNum = 4
   }
   const imgElms = document.querySelectorAll(".main-img")
 
   imgElms.forEach(element => {
-    console.log(element.id.slice(3));
     const type = element.id.slice(3)
-    //console.log("&& ",presets[targetTheme][type]);
-    element.src = `images\\${presets[targetTheme][type]}`
+    element.src = `images\\${presets[themeNum][type]}`
   })
 }
 

@@ -277,11 +277,11 @@ font-weight: 500;
 }
 
 /* Tab btns active state */
-[role="tab"][aria-selected="true"].btn-themes path {
+[role="tab"][aria-selected="true"].tab-themes path {
   stroke: #60C95E;
 }
 
-[role="tab"][aria-selected="true"].btn-custom path {
+[role="tab"][aria-selected="true"].tab-custom path {
   stroke: #ffaa00;
 }
 
@@ -317,11 +317,6 @@ font-weight: 500;
 
   /* border-bottom: 1px solid #b8b8b8; */
 }
-
-/* remove */
-/* .tab-exterior.border-active{
-  border-bottom: 2px solid #4e4e4e;
-} */
 
 .tab-exterior svg{margin-bottom: 8px;}
 
@@ -400,6 +395,10 @@ width: 50px;
 
 .btn-category:hover {
   background-color: rgba(51, 51, 51, 0.05);
+}
+
+[role="option"][aria-checked="true"] {
+  background-color: #EAEAEA;
 }
 
 .mob-footer {
