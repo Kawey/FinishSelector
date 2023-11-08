@@ -508,6 +508,25 @@ width: 50px;
 /* 
    OPTION BOX
 */
+
+.option-title {
+  margin-top: 2%;
+  display: flex;
+  flex-shrink: 0;
+  height: 100px;
+  max-height: 12%;
+  padding: 0 10px;
+}
+
+  .option-name {
+  color: #444;
+  font-size: 25px;
+  font-weight: 700;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
 .option-box {
   display: flex;
   flex-direction: column;
@@ -656,16 +675,7 @@ width: 50px;
   color: #444444;
   font-weight: 700;
   stroke: #444444;
-  /* fill: #444444; */
 }
-
- /* .activeNavIcon rect {
-  stroke: #444444
-}  */
-
-/* svg {
-  stroke: #ff0000
-}  */
 
 .blue-btns {
   width: 130px;
@@ -775,25 +785,6 @@ width: 50px;
     height: 80vh;
   }
 
-  .option-title {
-    /* background-color: red; */
-    margin-top: 2%;
-    display: flex;
-    flex-shrink: 0;
-    height: 100px;
-    max-height: 12%;
-    padding: 0 10px;
-  }
-
-  .option-name {
-    color: #444;
-    font-size: 25px;
-    font-weight: 700;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-  }
-
   .btn-arrow.close-option img {
     width: 65%;
   }
@@ -822,7 +813,6 @@ width: 50px;
       border-radius: 0;
     }
           
-        
     .nav-mobile {
       display: flex;
       flex-direction: column;
@@ -832,10 +822,6 @@ width: 50px;
       background-color: #333333;
       display: none;
     }
-
-    /* .box-customize {
-
-    } */
 
     .option-box {
       width: 100%;
@@ -971,6 +957,10 @@ width: 50px;
     max-width: none;
     max-height: 55vh;
     min-height: auto;
+  }
+
+  .option-title {
+
   }
 
   .box-options-tiles {
