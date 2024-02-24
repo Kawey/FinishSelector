@@ -1,4 +1,5 @@
-import {presets} from './render.js'
+import {presets} from './presets.js'
+import {updateState, turnOptionMod} from './updateState.js'
 
 const btnCloseOptions = document.getElementById("btnCloseOption");
 const optionBox = document.getElementById('option-box')
@@ -6,29 +7,29 @@ const optionBox = document.getElementById('option-box')
 const extIntBtns = document.querySelectorAll('.btns-ext-int')
 const tabInterior = document.getElementById("interior-tab")
 const tabExterior = document.getElementById("exterior-tab")
-const categoryBtns = document.querySelectorAll('.btn-category')
-const btnCloseSumLands = document.getElementById("btnCloseSumLands")
+//const categoryBtns = document.querySelectorAll('.btn-category')
+//const btnCloseSumLands = document.getElementById("btnCloseSumLands")
 
 const elementsSumMod = document.querySelectorAll('.getSumMod')
-const elmsFooterHeader = document.querySelectorAll('.get-footer-header')
+//const elmsFooterHeader = document.querySelectorAll('.get-footer-header')
 
 const modalInfo = document.getElementById("modal-info-mobile");
 const modalFP = document.getElementById("modal-FP-mobile");
 const modSummary = document.getElementById("box-summary");
 const modCategory = document.getElementById("box-category");
 
-const infoBoxAlbum = document.getElementById("info-box-album");
+//const infoBoxAlbum = document.getElementById("info-box-album");
 
-const btnSumLands = document.getElementById("btnSumLands");
+//const btnSumLands = document.getElementById("btnSumLands");
 
-const btnCloseFPLands = document.getElementById("btnCloseFPLands");
+//const btnCloseFPLands = document.getElementById("btnCloseFPLands");
 
 // TABS SYSTEM
 const tabsContainer = document.querySelector("[role=tablist]");
-const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
+//const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
 const tabPanels = document.querySelectorAll("[role=tabpanelexterior]");
 
-let themesContainer = document.getElementById("tabPanelThemes");
+
 
 // Get NAV Mobile buttons
 // btnCustomize need add in future
@@ -41,6 +42,9 @@ const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
 
 let currentTheme = 0 //remove?
 const currentState = new URLSearchParams(window.location.search).get('state');
+
+// let userSelect = presets[0]
+// localStorage.selected = JSON.stringify(userSelect);
 
 // On load, check query pram and update the DOM 
 switch (currentState) {
@@ -76,8 +80,7 @@ function getAllQueryParameters() {
 /*
     BUTTONS EVENT LISTENERS
 */
-
-//Switch Interior / Exterior
+// Switch Interior / Exterior
 extIntBtns.forEach(element => {
   element.addEventListener('click', () => {
     // Your event handler code goes here
@@ -91,13 +94,11 @@ extIntBtns.forEach(element => {
     }
   });
 });
-
+// Switch Color / Custom
 tabsContainer.addEventListener("click", (e) => {
   const clickedTab = e.target.closest("button");
   const currentTab = tabsContainer.querySelector('[aria-selected="true"]');
-  console.log(currentTab);
   if (!clickedTab || clickedTab === currentTab) return;
-
   switchTab(clickedTab);
 });
 
@@ -137,13 +138,13 @@ window.onclick = function (event) {
 }
 
 // activate SUMMARY in landscape mode
-btnSumLands.addEventListener("click", () => {
-  updateState("summary")
-  const sidebar = document.getElementById("sidebar")
-  sidebar.classList.remove("option-mod")
-  optionBox.classList.remove("option-mod")
-  activateSummary()
-})
+// btnSumLands.addEventListener("click", () => {
+//   updateState("summary")
+//   const sidebar = document.getElementById("sidebar")
+//   sidebar.classList.remove("option-mod")
+//   optionBox.classList.remove("option-mod")
+//   activateSummary()
+// })
 
 // close SUMMARY
 btnsCloseSum.forEach(btn => {
@@ -181,36 +182,6 @@ function switchTab(newTab) {
   moveIndicator(oldTab, newTab, tabsContainer);
 }
 
-export function eventPreset() {
-  const themeBtns = document.querySelectorAll('.btn-theme')
-  themeBtns.forEach((element,index) => {
-    element.addEventListener('click', (btn) => {
-      console.log(btn.target.dataset.theme);
-      switchPreset(btn.target,btn.target.dataset.theme)
-    });
-  });
-}
-
-function switchPreset(clickedBtn, themeNum) {
-  console.log("themesContainer",themesContainer);
-  console.log("tabsContainer",tabsContainer);
-  const oldThemeBtn = themesContainer.querySelector('[aria-checked="true"]')
-  oldThemeBtn.setAttribute("aria-checked", false)
-  clickedBtn.setAttribute("aria-checked", true)
-  if (themeNum <0) {
-    themeNum = 0
-    return
-  } else if (themeNum >4) {
-    themeNum = 4
-  }
-  const imgElms = document.querySelectorAll(".main-img")
-
-  imgElms.forEach(element => {
-    const type = element.id.slice(3)
-    element.src = `images\\${presets[themeNum][type]}`
-  })
-}
-
 function moveIndicator(oldTab, newTab, tabsContainer) {
   const newTabPosition = oldTab.compareDocumentPosition(newTab)
   const newTabWidth = newTab.offsetWidth / tabsContainer.offsetWidth
@@ -234,31 +205,6 @@ function moveIndicator(oldTab, newTab, tabsContainer) {
   //tabsContainer.style.setProperty('--_width', newTabWidth);
 }
 
-export function openOptionMenu() {
-    // open OPTIONS
-    const categoryBtns = document.querySelectorAll('.btn-category')
-    categoryBtns.forEach((element,index) => {
-      element.addEventListener('click', () => {
-        updateState("options")
-        turnOptionMod()
-        console.log(' category Element clicked:', element.dataset.tab);
-        document.getElementById("optionName").innerHTML = element.dataset.tab
-  
-        const tabcontent = document.getElementsByClassName("box-options-tiles");
-        for (let i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-      const categoryBtn = document.getElementsByClassName("btn-category");
-      for (let i = 0; i < categoryBtn.length; i++) {
-        categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
-      }
-      document.getElementById(element.dataset.tab).style.display = "grid";
-      console.log("element ",element);
-      element.className += " active";
-      });
-    });
-}
-
 function closeOptionsMenu() {
   updateState("category")
     const sidebar = document.getElementById("sidebar")
@@ -276,54 +222,9 @@ function closeOptionsMenu() {
   
 }
 
-export function turnOptionMod() {
-  const sidebar = document.getElementById("sidebar")
-  const navBarMob = document.getElementById("nav-mobile")
-  const optionBox = document.getElementById('option-box')
-  optionBox.classList.add("option-mod")
-  sidebar.classList.add("option-mod")
-  navBarMob.classList.add("option-mod")
-}
 
-function updateNavActiveIcon(targetState) {
-  const activeIcon = document.querySelector(".nav-buttons.activeNavIcon")
-  const activeIconClass = document.getElementsByClassName("nav-buttons activeNavIcon");
-  console.log("activeIcon ",activeIcon, activeIconClass);
-  activeIcon.classList.remove("activeNavIcon")
-  switch (targetState) {
-    case "category":
-      document.getElementById("btnCustomize").classList.add("activeNavIcon")
-      break;
-    case "options":
-      document.getElementById("btnCustomize").classList.add("activeNavIcon")
-      break;
-    case "info":
-      document.getElementById("btnInfo").classList.add("activeNavIcon")
-      break;
-    case "floorplan":
-      document.getElementById("btnFP").classList.add("activeNavIcon")
-      break;
-    case "summary":
-      document.getElementById("btnSummary").classList.add("activeNavIcon")
-      break;
-    default:
-      document.getElementById("btnCustomize").classList.add("activeNavIcon")
-      console.log("Switch default");
-      break;
-  }
-}
 
-export function updateState(paramValue) {
-  updateNavActiveIcon(paramValue)
-  // Get the current URL
-  const url = new URL(window.location.href);
 
-  // Set the query parameter
-  url.searchParams.set('state', paramValue);
-  url.searchParams.set('wall', "0")
-  // Update the URL with the new query parameter
-  window.history.replaceState({}, '', url);
-}
 
 function activateSummary() {
   const modSummary = document.getElementById("box-summary");

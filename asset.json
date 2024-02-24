@@ -28,7 +28,7 @@
     },
     "Soffit & Fascia": {
       "name": "White",
-      "color": "#f6f2eb",
+      "color": "cbc6c3",
       "src": "filing_00.png"
     },
     "Garage Door": {
@@ -292,7 +292,5 @@
       "src": "windows_04.png"
     }
   },
-
-
   "BG": "bg.jpg"
 }
