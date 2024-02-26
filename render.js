@@ -17,7 +17,7 @@ const userAssets = JSON.parse( localStorage.asset ) ?? assets[0]
 //localStorage.selected = JSON.stringify(userSelect);
 
 
-fetch('../asset.json')
+fetch('./asset.json')
   .then(response => response.json())
   .then(data => {
     const imgBox = document.getElementById('image-container')
