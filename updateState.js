@@ -1,4 +1,4 @@
-import {presets, icons} from './presets.js'
+import {presets, icons, assets} from './presets.js'
 
 let userSelect = presets[0]
 
@@ -33,10 +33,14 @@ export function eventPreset() {
   themeBtns.forEach((element,index) => {
     element.addEventListener('click', (btn) => {
       console.log(btn.target.dataset.theme);
+      const theme = btn.target.dataset.theme
       userSelect = presets[btn.target.dataset.theme]
-      userIcon = icons[[btn.target.dataset.theme]]
       localStorage.selected = JSON.stringify(userSelect);
+
+      userIcon = icons[[btn.target.dataset.theme]]
       localStorage.icon = JSON.stringify(userIcon);
+
+      localStorage.asset = JSON.stringify(assets[theme]);
       switchPreset(btn.target,btn.target.dataset.theme)
     });
   });
@@ -63,7 +67,6 @@ function switchPreset(clickedBtn, themeNum) {
 function updateNavActiveIcon(targetState) {
   const activeIcon = document.querySelector(".nav-buttons.activeNavIcon")
   const activeIconClass = document.getElementsByClassName("nav-buttons activeNavIcon");
-  console.log("activeIcon ",activeIcon, activeIconClass);
   activeIcon.classList.remove("activeNavIcon")
   switch (targetState) {
     case "category":

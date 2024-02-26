@@ -1,6 +1,7 @@
 :root {
   --bg: #EFEFEF;
   --card-bg: #FFFFFF;
+  --row-bg: #F8F8F8;
   --txt-grey: #7A7A7A;
   --txt-dark: #444444;
 }
@@ -38,6 +39,10 @@ h1 {
 .box-logo{
   height: 200px;
   display: flex;
+}
+.footer{
+  height: 100px;
+  position: relative;
 }
 
 .box-logo > img{
@@ -126,13 +131,22 @@ align-items: center;
 .box.summary {
   height: 980px;
   display: flex;
+  flex-direction: column;
 }
 
-.summary-table {
+.sum-tables {
+  display: flex;
+}
+
+.table {
   flex-grow: 1;
   overflow: auto;
-  padding: 5% 5%;
+  margin: 5% 5%;
 }
+
+/* .sum-category {
+  maxwidth: 600px;
+} */
 
 .catetory-title{
   display: flex;
@@ -148,22 +162,21 @@ align-items: center;
 }
 img.material {
   height: 75px;
-width: 75px;
-object-fit: cover;
-
+  width: 75px;
+  object-fit: cover;
 }
 
 .material {
-height: 55px;
-width: 55px;
-background-color: var(--bg);
-margin-right: 20px;
-border-radius: 8px; 
+  height: 55px;
+  width: 55px;
+  background-color: var(--bg);
+  margin-right: 20px;
+  border-radius: 8px; 
 }
 
 .row {
   display: flex;
-  background-color: #E8E8E8;;
+  background-color: var(--row-bg);
   justify-content: space-evenly;
 }
 
@@ -172,17 +185,14 @@ border-radius: 8px;
 }
 
 .bloc {
-  background-color: red;
+  margin-left: 60px;
 }
 
 .bloc div:nth-child(even).row{
-  background-color: #EFEFEF;
+  background-color: #fff;
 }
 
-.blue-btns {
-  position: absolute;
-  top: 30px;
-  right: 30px;
+.btns {
   width: 90px;
   height: 30px;
   flex-shrink: 0;
@@ -190,7 +200,7 @@ border-radius: 8px;
   cursor: pointer;
 
   color: var(--txt-dark);
-  background-color: rgba(red, green, blue, alpha);
+  /* background-color: rgba(red, green, blue, alpha); */
   border: none;
   border-radius: 3px;
 
@@ -200,8 +210,58 @@ border-radius: 8px;
   border: #444444 solid 1px;
 }
 
+.pos-header {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+
+.pos-footer {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.download {
+  background-color: #4A98F3;
+  border: none;
+  color: var(--bg);
+  width: 150px;
+  font-size: 15px;
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+}
+
+.share {
+  position: absolute;
+  left: 210px;
+  bottom: 30px;
+}
+
 .blue-btns:hover {
   background-color: #F3F4F6;
   text-decoration: none;
   transition-duration: 0.1s;
+}
+.price-box {
+display: flex;
+flex-direction: row-reverse;
+}
+
+.pos-box-price {
+  width: 500px;
+}
+
+.price {
+  font-size: 45px;
+  line-height: 0%;
+}
+.price span {
+font-weight: 600;
+}
+.disclimer {
+  color: var(--txt-grey);
+  line-height: 100%;
+  width: 330px;
 }

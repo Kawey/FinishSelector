@@ -1,4 +1,3 @@
-import {presets} from './presets.js'
 import {updateState, turnOptionMod} from './updateState.js'
 
 const btnCloseOptions = document.getElementById("btnCloseOption");
@@ -51,7 +50,7 @@ switch (currentState) {
   case "category":
     break;
   case "options":
-    turnOptionMod()
+    //turnOptionMod()
     break;
   case "info":
     
@@ -164,7 +163,6 @@ function switchTab(newTab) {
   const activePanel = tabsContainer.nextElementSibling.querySelector(
     "#" + CSS.escape(activePanelId)
   );
-  console.log("activePanel", activePanel);
   const tabButtons = tabsContainer.querySelectorAll("[role=tab]");
   tabButtons.forEach((button) => {
     button.setAttribute("aria-selected", false);

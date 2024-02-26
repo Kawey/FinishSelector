@@ -1,5 +1,5 @@
 {
-  "Tabs": [
+  "TabsN": [
     "Wall #1",
     "Wall #2",
     "Roof",
@@ -8,14 +8,23 @@
     "Door",
     "Windows"
   ],
+  "Tabs": [
+    "Wall1",
+    "Wall2",
+    "Roof",
+    "SoffitFascia",
+    "GarageDoor",
+    "Door",
+    "Windows"
+  ],
   "Default": {
-    "Wall #1": {
+    "Wall1": {
       "name": "Brick 00",
       "color": "#e8e8e9",
       "src": "brick_00.png",
       "icon": "icon_brick_00.jpg"
     },
-    "Wall #2": {
+    "Wall2": {
       "name": "Stone 00",
       "color": "#93a5aa",
       "src": "stone_00.png",
@@ -26,12 +35,12 @@
       "color": "#cbc6c3",
       "src": "roof_00.png"
     },
-    "Soffit & Fascia": {
+    "SoffitFascia": {
       "name": "White",
       "color": "cbc6c3",
       "src": "filing_00.png"
     },
-    "Garage Door": {
+    "GarageDoor": {
       "name": "Beige",
       "color": "#c8bbae",
       "src": "gate_00.png"
@@ -47,7 +56,7 @@
       "src": "windows_00.png"
     }
   },
-  "Wall #1": {
+  "Wall1": {
     "brick1": {
       "name": "brick_01",
       "color": "#b4b4b1",
@@ -127,7 +136,7 @@
       "icon": "icon_brick_13.jpg"
     }
   },
-  "Wall #2": {
+  "Wall2": {
     "stone1": {
       "name": "stone_01",
       "color": "#828283",
@@ -199,7 +208,7 @@
       "src": "roof_04.png"
     }
   },
-  "Soffit & Fascia": {
+  "SoffitFascia": {
     "filing1": {
       "name": "Beige",
       "color": "#e2ddd2",
@@ -221,7 +230,7 @@
       "src": "filing_04.png"
     }
   },
-  "Garage Door": {
+  "GarageDoor": {
     "gate1": {
       "name": "White",
       "color": "#d9d9d9",
@@ -271,22 +280,22 @@
     }
   },
   "Windows": {
-    "windows1": {
+    "window1": {
       "name": "Beige",
       "color": "#dfdad1",
       "src": "windows_01.png"
     },
-    "windows2": {
+    "window2": {
       "name": "Olive",
       "color": "#9b947f",
       "src": "windows_02.png"
     },
-    "windows3": {
+    "window3": {
       "name": "Dark Olive",
       "color": "#37342e",
       "src": "windows_03.png"
     },
-    "windows4": {
+    "window4": {
       "name": "Black",
       "color": "#0f0f0f",
       "src": "windows_04.png"

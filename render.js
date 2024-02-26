@@ -1,15 +1,5 @@
 import {updateState, turnOptionMod, eventPreset} from './updateState.js'
-import {presets, icons} from './presets.js'
-
-// No default value needed, left-hand operand is "Hello"
-const greeting = "Hello";
-const defaultGreeting = greeting ?? "Hi";
-console.log(defaultGreeting); // Output: "Hello"
-
-// Default value used, left-hand operand is undefined
-let name;
-const fullName = name ?? "Guest";
-console.log(fullName); // Output: "Guest"
+import {presets, icons, assets} from './presets.js'
 
 localStorage.selected ? JSON.parse( localStorage.selected ) 
 : localStorage.selected = JSON.stringify(presets[0])
@@ -18,6 +8,12 @@ const userSelect = JSON.parse( localStorage.selected ) ?? presets[0]
 localStorage.icon ? JSON.parse( localStorage.icon ) 
 : localStorage.icon = JSON.stringify(icons[0])
 const userIcon = JSON.parse( localStorage.icon ) ?? icons[0]
+
+localStorage.asset ? JSON.parse( localStorage.asset ) 
+: localStorage.asset = JSON.stringify(assets[0])
+const userAssets = JSON.parse( localStorage.asset ) ?? assets[0]
+
+
 //localStorage.selected = JSON.stringify(userSelect);
 
 
@@ -32,31 +28,28 @@ fetch('../asset.json')
     loadCategoryMenu(data)//load tab link buttons
     loadTabContent(data)
     loadThemeTabContent(presets)
-    //loadSummary(data)
-    //activateDefaultColors(data)
-    //document.getElementById("defaultOpen").click();
     const allOptionTiles = document.querySelectorAll(".tile")
     allOptionTiles.forEach((tile)=>{
       tile.addEventListener("click",(evnt)=>{
         const {type,file,color,icon} = evnt.currentTarget.dataset
-        console.log("wow!",evnt.currentTarget, evnt.currentTarget.dataset.type);
+        const subType = evnt.currentTarget.id
         colorClick(evnt.currentTarget, evnt.currentTarget.dataset.type)
 
-        console.log("data", type);
         const srcIcon = icon ?? color
-        updateSelectedImg(type, file, srcIcon)
-        console.log(icon);
+        saveSelection(type, subType, file, srcIcon)
+        
       })
     })
   })
   .catch(error => console.error(error));
 
-export function updateSelectedImg(key, value, srcIcon) {
-  console.log("updateSelectedImg");
+export function saveSelection(key, subType, value, srcIcon) {
   userSelect[key]= value;
   localStorage.selected = JSON.stringify(userSelect);
   userIcon[key]= srcIcon;
   localStorage.icon = JSON.stringify(userIcon);
+  userAssets[key] = subType;
+  localStorage.asset = JSON.stringify(userAssets);
 }
 
 function loadThemeTabContent(themes) {
@@ -89,7 +82,6 @@ function loadImages(imgObj, userSelect) {
     const tab = importTabs[i];
     if (userSelect) {
       imgItems += `<img class="layers main-img" id="img${tab}" src="../images\\${userSelect[tab]}" alt="Image Node"></img>`
-      console.log(userSelect[tab]);
     }else{
       const imgsrc = getDefaultImg(imgObj.Default[tab], "src")
       imgItems += `<img class="layers main-img" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
@@ -101,9 +93,6 @@ function loadImages(imgObj, userSelect) {
     const tab = importTabs[i];
     addImg2DOM(imgObj[tab], tab)
   }
-  // for (let i = 0; i < importTabs.length; i++) {
-  //   const tab = importTabs[i];
-  // }
 }
 
   function getDefaultImg(obj, target) {
@@ -113,8 +102,6 @@ function loadImages(imgObj, userSelect) {
         if (typeof obj[property] === "object") {
           return getDefaultImg(obj[property], target); // recursive call
         } else {
-          //console.log(`this ${property}: ${target}`);
-          //console.log(target === property);
           if (target === property) {
             //console.log("return", obj[property] );
             return obj[property]
@@ -152,16 +139,13 @@ function loadImages(imgObj, userSelect) {
 
     }
     tabBox.innerHTML += tabItems
-    console.log("openOptionMenu()");
-    //openOptionMenu()
 
-    // open OPTIONS
+    // open OPTIONS selected catigory
     const categoryBtns = document.querySelectorAll('.btn-category')
     categoryBtns.forEach((element,index) => {
       element.addEventListener('click', () => {
         updateState("options")
         turnOptionMod()
-        console.log(' category Element clicked:', element.dataset.tab);
         document.getElementById("optionName").innerHTML = element.dataset.tab
   
         const tabcontent = document.getElementsByClassName("box-options-tiles");
@@ -173,71 +157,72 @@ function loadImages(imgObj, userSelect) {
         categoryBtn[i].className = categoryBtn[i].className.replace(" active", "");
       }
       document.getElementById(element.dataset.tab).style.display = "grid";
-      console.log("element ",element);
       element.className += " active";
       });
+      console.log("op ev");
     });
   }
 
+// create options tiles
+function loadTabContent(imgObj) {
+  const importTabs = imgObj.Tabs;
+  const allTabsDiv = document.getElementById('option-box')
 
-  function loadTabContent(imgObj) {
-    const importTabs = imgObj.Tabs;
-    const allTabsDiv = document.getElementById('option-box')
-  
-    for (let i = 0; i < importTabs.length; i++) {
-      let tabItems = '';
-      const tab = importTabs[i];
-      const div = document.createElement("div")
-      div.id = tab
-      //console.log(tab, imgObj.Default[tab]);
-      if (i == 0) { //default tab?
-        
-        div.className = "box-options-tiles active" //static for def?
-        div.style.display = "grid"
-        
-      } else { //not default tab?
-        div.classList.add("box-options-tiles")
-        div.style.display = "none"
-      }
+  for (let i = 0; i < importTabs.length; i++) {
+    let tabItems = '';
+    const tab = importTabs[i];
+    const div = document.createElement("div")
+    div.id = tab
+    //console.log(tab, imgObj.Default[tab]);
+    if (i == 0) { //default tab?
+      
+      div.className = "box-options-tiles active" //static for def?
+      div.style.display = "grid"
+      
+    } else { //not default tab?
+      div.classList.add("box-options-tiles")
+      div.style.display = "none"
+    }
 
-      // add DEFAULT color item
-      const { name, color, src, icon } = imgObj.Default[tab]
-      //console.log(name,color,src,icon);
-      let srcIcon = icon ? `data-icon="${icon}"` : ''
-      let finishIcon = icon? `<img src="./icons/${icon}" alt="">`: `<div style="background: ${color};"></div>`
-      tabItems += `<div id="${tab.toLowerCase()}-color0" class=" tile color ${tab.toLowerCase()}-color" 
-          data-file="${src}" data-item-name="${name}" ${srcIcon}
-          data-color="${color}" data-type="${tab}">
-        ${finishIcon}
-        <span>${name}</span>
-      </div>`
-      console.log("icon",icon);
-      // add ALL color item
-      for (const key in imgObj[tab]) {
-        if (Object.hasOwnProperty.call(imgObj[tab], key)) {
-          const element = imgObj[tab][key];
-          //console.log(element)
-          const { name, color, src, icon } = element
-          let finishIcon = icon? `<img src="./icons/${icon}" alt="">`: 
-                                `<div style="background: ${color};"></div>`
-          //console.log(name, color, src);
-          srcIcon = icon ? `data-icon="${icon}"` : ''
-          tabItems += `<div class=" tile color ${tab.toLowerCase() }-color" 
-      data-file="${src}" data-item-name="${name}"
-          data-color="${color}" data-type="${tab}" ${srcIcon}>
+    // add DEFAULT color item
+    const { name, color, src, icon } = imgObj.Default[tab]
+    //console.log(name,color,src,icon);
+    let srcIcon = icon ? `data-icon="${icon}"` : ''
+    let finishIcon = icon ? `<img src="./icons/${icon}" alt="">`
+    : `<div style="background: ${color};"></div>`
+
+    tabItems += `<div id="${tab}" class=" tile color ${tab.toLowerCase()}-color" 
+      data-file="${src}" data-item-name="${name}" ${srcIcon}
+      data-color="${color}" data-type="${tab}">
       ${finishIcon}
       <span>${name}</span>
-      </div>`
-      //onclick="colorClick(this, '${tab}')"
-        }
+    </div>`
+    // add ALL color item
+    for (const key in imgObj[tab]) {
+      if (Object.hasOwnProperty.call(imgObj[tab], key)) {
+        const element = imgObj[tab][key];
+        const { name, color, src, icon } = element
+
+        let finishIcon = icon ? 
+        `<img src="./icons/${icon}" alt="">`: `<div style="background: ${color};"></div>`
+        srcIcon = icon ? `data-icon="${icon}"` : ''
+
+        tabItems += `<div class=" tile color ${tab.toLowerCase() }-color" 
+          id="${key}"
+          data-file="${src}" data-item-name="${name}"
+          data-color="${color}" data-type="${tab}" ${srcIcon}>
+          ${finishIcon}
+          <span>${name}</span>
+        </div>`
       }
-      div.innerHTML += tabItems
-      allTabsDiv.appendChild(div)
     }
+    div.innerHTML += tabItems
+    allTabsDiv.appendChild(div)
   }
+
+}
 
   function colorClick(evt, itemName) {
     const img = document.getElementById(`img${itemName}`)
-    console.log("img",img);
     img.src = `images/${evt.dataset.file}`;
   }

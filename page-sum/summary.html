@@ -7,18 +7,25 @@
   <link rel="stylesheet" href="summary.css">
   <link rel="stylesheet" href="https://use.typekit.net/dqp6nyz.css">
   <link rel="icon" type="image/x-icon" href="../ui_icons/favicon.ico">
+  <!-- <script src="../html2pdf.bundle.min.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
   <a href="../index.html">
-    <button class="blue-btns btn-close-sum-lands btnCloseSum" id="btnCloseSumLands">Close</button>
+    <button class="btns btn-close pos-header" id="btnCloseSumLands">Close</button>
   </a>
+  
     
 
   <div class="main-container">
-    <div class="mid-container">
+    <div class="mid-container" >
       <div class="box-logo">
         <img src="./logo_acorn.png" alt=""></div>
-      <div class="box image">
+      <div class="box image" id="print">
         <div id="imagebox" class="imagebox">
           <img class="layers" src="../bg.jpg" alt="">
         </div>
@@ -36,6 +43,7 @@
           </div>
         </div>
       </div>
+      <div class="html2pdf__page-break"></div>
       <div class="box fp">
         <div class="modal-FP-content">
           <div>
@@ -48,163 +56,180 @@
           </div>
         </div>
       </div>
+      <div class="html2pdf__page-break"></div>
       <div class="box summary">
-        <div class="summary-table left">
-          <div class="sum-category">
-            <div class="catetory-title">
-              <div class="icon-box">
-                <img class="material" id="wall1" src="">
+        <div class="sum-tables">
+          <div class="table left">
+            <div class="sum-category">
+              <div class="catetory-title">
+                <div class="icon-box">
+                  <img class="material" id="Wall1" src="">
+                </div>
+                <h2>Wall #1</h2>
               </div>
-              <h2>Wall #1</h2>
-            </div>
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Face Brick</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Washed White</div>
-              </div>
-              <div class="row">
-                <div>Bond</div><div>Crossbond</div>
-              </div>
-              <div class="row">
-                <div>Mortar Colour</div><div>Natural (Standard)</div>
-              </div>
-              <div class="row">
-                <div>Brick Size</div><div>230x76x110mm</div>
-              </div>
-            </div>
-          </div>
-          <div class="sum-category">
-            <div class="catetory-title">
-              <div class="icon-box">
-                <img class="material" id="wall2" src="">
-              </div>
-              <h2>Wall #2</h2>
-            </div>          
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Veneer Stone</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Rustic Brown</div>
-              </div>
-              <div class="row">
-                <div>Shape</div><div>Irregular</div>
-              </div>
-              <div class="row">
-                <div>Thickness</div><div>1-2″</div>
-              </div>
-              <div class="row">
-                <div>Size</div><div>Approx. 20-42″</div>
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Face Brick</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Washed White</div>
+                </div>
+                <div class="row">
+                  <div>Bond</div><div>Crossbond</div>
+                </div>
+                <div class="row">
+                  <div>Mortar Colour</div><div>Natural (Standard)</div>
+                </div>
+                <div class="row">
+                  <div>Brick Size</div><div>230x76x110mm</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="sum-category">
-            <div class="catetory-title">
-              <div class="material" id="roof"></div>
-              <h2>Roof</h2>
+            <div class="sum-category">
+              <div class="catetory-title">
+                <div class="icon-box">
+                  <img class="material" id="Wall2" src="">
+                </div>
+                <h2>Wall #2</h2>
+              </div>          
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Veneer Stone</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Rustic Brown</div>
+                </div>
+                <div class="row">
+                  <div>Shape</div><div>Irregular</div>
+                </div>
+                <div class="row">
+                  <div>Thickness</div><div>1-2″</div>
+                </div>
+                <div class="row">
+                  <div>Size</div><div>Approx. 20-42″</div>
+                </div>
+              </div>
+            </div>
+            <div class="sum-category">
+              <div class="catetory-title">
+                <div class="material" id="Roof"></div>
+                <h2>Roof</h2>
+              </div>
+              
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>MapleRoof</div>
+                </div>
+                <div class="row">
+                  <div>Material</div><div>Asphalt shingles</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Maplewood Brown</div>
+                </div>
+                <div class="row">
+                  <div>Installation</div><div>Interlocking Design</div>
+                </div>
+                <div class="row">
+                  <div>Size</div><div>36" x 12"</div>
+                </div>
+              </div>
             </div>
             
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>MapleRoof</div>
+          </div>
+          <div class="table right">
+            <div class="sum-category">
+              
+              <div class="catetory-title">
+                <div class="material" id="SoffitFascia"></div>
+                <h2>Soffit & Fascia</h2>
               </div>
-              <div class="row">
-                <div>Material</div><div>Asphalt shingles</div>
+              
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Ventilated Panels</div>
+                </div>
+                <div class="row">
+                  <div>Material</div><div>Aluminum</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Rich charcoal grey</div>
+                </div>
+                <div class="row">
+                  <div>Size</div><div>12" x 12'- 6" x 8"</div>
+                </div>
               </div>
-              <div class="row">
-                <div>Colour</div><div>Maplewood Brown</div>
+            </div>
+            <div class="sum-category">
+              <div class="catetory-title">
+                <div class="material" id="GarageDoor"></div>
+                <h2>Gate</h2>
               </div>
-              <div class="row">
-                <div>Installation</div><div>Interlocking Design</div>
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Exterior Enamel Paint</div>
+                </div>
+                <div class="row">
+                  <div>Material</div><div>Acrylic Latex</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Canadian Cedar Brown</div>
+                </div>
               </div>
-              <div class="row">
-                <div>Size</div><div>36" x 12"</div>
+            </div>
+            <div class="sum-category">
+              
+              <div class="catetory-title">
+                <div class="material" id="Door"></div>
+                <h2>Door</h2>
+              </div>
+              
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Satin Finish Paint</div>
+                </div>
+                <div class="row">
+                  <div>Material</div><div>Water-based Polyurethane</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Arctic White</div>
+                </div>
+              </div>
+            </div>
+            <div class="sum-category">
+              
+              <div class="catetory-title">
+                <div class="material" id="Windows"></div>
+                <h2>Windows</h2>
+              </div>
+              
+              <div class="bloc">
+                <div class="row">
+                  <div>Type</div><div>Semi-Gloss Paint</div>
+                </div>
+                <div class="row">
+                  <div>Material</div><div>Oil-based Alkyd</div>
+                </div>
+                <div class="row">
+                  <div>Colour</div><div>Rocky Mountain Gray</div>
+                </div>
               </div>
             </div>
           </div>
-          
         </div>
-        <div class=" summary-table right">
-          <div class="sum-category">
-            
-            <div class="catetory-title">
-              <div class="material" id="soffit"></div>
-              <h2>Soffit & Fascia</h2>
-            </div>
-            
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Ventilated Panels</div>
-              </div>
-              <div class="row">
-                <div>Material</div><div>Aluminum</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Rich charcoal grey</div>
-              </div>
-              <div class="row">
-                <div>Size</div><div>12" x 12'- 6" x 8"</div>
-              </div>
-            </div>
-          </div>
-          <div class="sum-category">
-            <div class="catetory-title">
-              <div class="material" id="gate"></div>
-              <h2>Gate</h2>
-            </div>
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Exterior Enamel Paint</div>
-              </div>
-              <div class="row">
-                <div>Material</div><div>Acrylic Latex</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Canadian Cedar Brown</div>
-              </div>
-            </div>
-          </div>
-          <div class="sum-category">
-            
-            <div class="catetory-title">
-              <div class="material" id="door"></div>
-              <h2>Door</h2>
-            </div>
-            
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Satin Finish Paint</div>
-              </div>
-              <div class="row">
-                <div>Material</div><div>Water-based Polyurethane</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Arctic White</div>
-              </div>
-            </div>
-          </div>
-          <div class="sum-category">
-            
-            <div class="catetory-title">
-              <div class="material" id="windows"></div>
-              <h2>Windows</h2>
-            </div>
-            
-            <div class="bloc">
-              <div class="row">
-                <div>Type</div><div>Semi-Gloss Paint</div>
-              </div>
-              <div class="row">
-                <div>Material</div><div>Oil-based Alkyd</div>
-              </div>
-              <div class="row">
-                <div>Colour</div><div>Rocky Mountain Gray</div>
-              </div>
-            </div>
+        <div class="price-box">
+          <div class="pos-box-price">
+            <p class="price">Price — <span>$1,750,000*</span></p>
+          <p class="disclimer">*Please note that prices are subject to change,
+            depending on selected options.</p>
           </div>
         </div>
+      </div>
+      <div class="footer">
+        <a href="../index.html">
+          <button class="btns btn-close pos-footer" id="btnCloseSumLands">Close</button>
+        </a>
+        <button class="btns download" id="btnPDF">Download PDF</button>
+        <button class="btns share" id="btnShare">Share</button>
       </div>
     </div>
   </div>

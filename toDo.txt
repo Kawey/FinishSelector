@@ -1,8 +1,12 @@
 + disactivate preset if any custom prop chosen
-show active custom options from preset
-load URLParams Theme or Custom
+show active custom options(tile) from preset
 New Summary
+ -match design
+??load URLParams Theme or Custom
+
 
 MOBILE
 tab buttons horizontal align
 info window
+New Summary
+ -adapt layout
