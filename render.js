@@ -81,7 +81,7 @@ function loadImages(imgObj, userSelect) {
   for (let i = 0; i < importTabs.length; i++) {
     const tab = importTabs[i];
     if (userSelect) {
-      imgItems += `<img class="layers main-img" id="img${tab}" src="../images\\${userSelect[tab]}" alt="Image Node"></img>`
+      imgItems += `<img class="layers main-img" id="img${tab}" src="./images\\${userSelect[tab]}" alt="Image Node"></img>`
     }else{
       const imgsrc = getDefaultImg(imgObj.Default[tab], "src")
       imgItems += `<img class="layers main-img" id="img${tab}" src="images\\${imgsrc}" alt="Image Node"></img>`
