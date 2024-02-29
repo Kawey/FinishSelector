@@ -115,26 +115,26 @@ btnCloseOptions.addEventListener('click', () => {
   navBarMob.classList.remove("option-mod")
 })
 
-// avtivate INFO mode nav-bar
-btnInfo.onclick = function () {
-  updateState("info")
-  modalInfo.style.display = "flex";
-}
+// // avtivate INFO mode nav-bar
+// btnInfo.onclick = function () {
+//   updateState("info")
+//   modalInfo.style.display = "flex";
+// }
 
-btnSummary.onclick = function () {
-  updateState("summary")
-  activateSummary(elementsSumMod)
-  modCategory.style.display = "none";
-  modSummary.style.display = "flex";
-}
+// btnSummary.onclick = function () {
+//   updateState("summary")
+//   activateSummary(elementsSumMod)
+//   modCategory.style.display = "none";
+//   modSummary.style.display = "flex";
+// }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modalInfo) {
-    updateState("category")
-    modalInfo.style.display = "none";
-  }
-}
+// window.onclick = function (event) {
+//   if (event.target == modalInfo) {
+//     updateState("category")
+//     modalInfo.style.display = "none";
+//   }
+// }
 
 // activate SUMMARY in landscape mode
 // btnSumLands.addEventListener("click", () => {

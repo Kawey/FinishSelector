@@ -43,7 +43,7 @@ export const presets = [{
 export const icons = [
   {
   "Wall1": "icon_brick_00.jpg",
-  "Wall2": "icon_icon_stone_00.jpg",
+  "Wall2": "icon_stone_00.jpg",
   "Roof": "#cbc6c3",
   "SoffitFascia": "#cbc6c3",
   "GarageDoor": "#c8bbae",
