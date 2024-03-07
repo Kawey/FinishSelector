@@ -1,4 +1,4 @@
-import {updateState, turnOptionMod, eventPreset} from './updateState.js'
+import {updateState, turnOptionMod, craateEventPresetBtn} from './updateState.js'
 import {presets, icons, assets} from './presets.js'
 
 localStorage.selected ? JSON.parse( localStorage.selected ) 
@@ -58,6 +58,7 @@ function loadThemeTabContent(themes) {
     const div = document.createElement("div")
     if (index===0) {
       div.setAttribute("aria-checked", true);
+      div.id = 'first'
     }
     div.classList.add("btn-category")
     div.classList.add("btn-theme")
@@ -66,7 +67,7 @@ function loadThemeTabContent(themes) {
     div.innerHTML = `Preset #${index+1}`
     ThemeBox.appendChild(div)
   })
-  eventPreset()
+  craateEventPresetBtn()
 }
 
 function loadImages(imgObj, userSelect) {

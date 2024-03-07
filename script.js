@@ -1,5 +1,5 @@
 import {updateState, turnOptionMod, switchCustomInfoState} from './updateState.js'
-import { navBar } from '../navBar.js'
+import { navBar } from './navBar.js'
 
 // mobile nav bar state menagment
 localStorage.state ? localStorage.state 
@@ -131,36 +131,6 @@ btnCloseOptions.addEventListener('click', () => {
   navBarMob.classList.remove("option-mod")
 })
 
-// // avtivate INFO mode nav-bar
-// btnInfo.onclick = function () {
-//   updateState("info")
-//   modalInfo.style.display = "flex";
-// }
-
-// btnSummary.onclick = function () {
-//   updateState("summary")
-//   activateSummary(elementsSumMod)
-//   modCategory.style.display = "none";
-//   modSummary.style.display = "flex";
-// }
-
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function (event) {
-//   if (event.target == modalInfo) {
-//     updateState("category")
-//     modalInfo.style.display = "none";
-//   }
-// }
-
-// activate SUMMARY in landscape mode
-// btnSumLands.addEventListener("click", () => {
-//   updateState("summary")
-//   const sidebar = document.getElementById("sidebar")
-//   sidebar.classList.remove("option-mod")
-//   optionBox.classList.remove("option-mod")
-//   activateSummary()
-// })
-
 // close SUMMARY
 btnsCloseSum.forEach(btn => {
   btn.addEventListener('click', () => { 
@@ -235,10 +205,6 @@ function closeOptionsMenu() {
     //navBarMob.classList.remove("option-mod")
   
 }
-
-
-
-
 
 function activateSummary() {
   const modSummary = document.getElementById("box-summary");

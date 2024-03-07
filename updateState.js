@@ -28,25 +28,26 @@ export function turnOptionMod() {
   navBarMob.classList.add("option-mod")
 }
 
-export function eventPreset() {
+export function craateEventPresetBtn() {
   const themeBtns = document.querySelectorAll('.btn-theme')
   themeBtns.forEach((element,index) => {
     element.addEventListener('click', (btn) => {
       console.log(btn.target.dataset.theme);
       const theme = btn.target.dataset.theme
-      userSelect = presets[btn.target.dataset.theme]
+      userSelect = presets[theme]
       localStorage.selected = JSON.stringify(userSelect);
 
-      userIcon = icons[[btn.target.dataset.theme]]
+      userIcon = icons[[theme]]
       localStorage.icon = JSON.stringify(userIcon);
 
       localStorage.asset = JSON.stringify(assets[theme]);
-      switchPreset(btn.target,btn.target.dataset.theme)
+      switchPreset(btn.target,theme)
     });
   });
 }
 
-function switchPreset(clickedBtn, themeNum) {
+export function switchPreset(clickedBtn, themeNum) {
+  clickedBtn = clickedBtn ? clickedBtn : document.getElementById('first')
   const oldThemeBtn = themesContainer.querySelector('[aria-checked="true"]')
   oldThemeBtn.setAttribute("aria-checked", false)
   clickedBtn.setAttribute("aria-checked", true)
