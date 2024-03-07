@@ -2,13 +2,18 @@
 // http://127.0.0.1:5501/page-sum/summary.html?Wall1=brick1&Wall2=stone1&Roof=roof1&SoffitFascia=filing1&GarageDoor=gate1&Door=door1&Windows=window1
 
 import {presets,icons, assets} from '../presets.js'
-import { navBar, navBarTest} from '../navBar.js'
+import { navBar } from '../navBar.js'
 //console.log(navBar('WOW'));
-const mainContainer = document.getElementById('nav-mobile')
 
-mainContainer.innerHTML = navBar('summary')
+// mobile nav bar state menagment
+localStorage.state ? localStorage.state 
+: localStorage.state = "summary"
+localStorage.state = "summary"
+
+const elmNavBar = document.getElementById('nav-mobile')
+navBar(elmNavBar, 'summary')
 //mainContainer.innerHTML = navBarTest
-console.log(mainContainer);
+console.log("mainContainer");
 
 localStorage.selected ? JSON.parse( localStorage.selected ) : localStorage.selected = JSON.stringify(presets[0])
 const userSelect = JSON.parse( localStorage.selected ) ?? presets[0]
@@ -27,12 +32,12 @@ const urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams.has("Wall1"));
 
 if (urlParams.size ===7 && urlParams.has("Wall1")) {
-  console.log("Search");
+  console.log("load url Search");
   loadFromUrl(urlParams, imgBox, iconsHtml)
   console.log(iconsHtml);
 
 } else {
-  console.log("Local");
+  console.log("load Local storage");
   loadSelectedImg(userSelect, imgBox)
   loadIcons(iconsHtml, userIcon)
 }

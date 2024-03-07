@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Finish Selector for canadian realestate Demo Project Acorn Colotune">
-  <title>20 || Finish Selector</title>
+  <title>21 || Finish Selector</title>
   <link rel="icon" type="image/x-icon" href="./ui_icons/favicon.ico">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://use.typekit.net/dqp6nyz.css">
@@ -26,8 +26,8 @@
     </div> -->
 
     <!-- NAVIGATION BAR MOBILE -->
-  <nav class="nav-mobile getSumMod" id="nav-mobile">
-    <button id="btnCustomize" class="nav-buttons activeNavIcon" onclick="location.href='./index.html'">
+  <nav class="nav-mobile" id="nav-mobile">
+    <!-- <button id="btnCustomize" class="nav-buttons activeNavIcon" onclick="location.href='./index.html'">
       <svg class="icon-nav" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="icon_m_customize">
           <rect id="Rectangle 258" x="21" y="7" width="15" height="14" rx="2" transform="rotate(90 21 7)" stroke="#A4A4A4"
@@ -50,7 +50,7 @@
       </svg>
       <span>INFO</span>
     </button>
-    <button id="btnFP" class="nav-buttons" onclick="location.href='./floor-plan.html'" type="button">
+    <button id="btnFP" class="nav-buttons" onclick="location.href='./page-fp/floor-plan.html'" type="button">
       <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="icon_m_fp">
           <rect id="Rectangle 258" x="14" y="3.41421" width="14.9704" height="14.9704" rx="2"
@@ -87,13 +87,13 @@
         </g>
       </svg>
       <span>RESET</span>
-    </button>
+    </button> -->
   </nav>
   <!-- END NAVIGATION BAR mobile -->
     <!-- Main Container -->
-    <div class="main-container getSumMod">
+    <div class="main-container">
 
-      <div class="sidebar getSumMod" id="sidebar">
+      <div class="sidebar" id="sidebar">
         
         <!-- SUMMARY -->
         <div class="box-summary" id="box-summary" style="display: none;">
@@ -228,8 +228,8 @@
           </nav>
         </div>
         <!-- SUMMARY END-->
-        <div class="box-category getSumMod" id="box-category" >
-          <div class="info-box-album getSumMod" id="info-box-album">
+        <div class="box-category" id="box-category" >
+          <div class="info-box-album" id="info-box-album">
             <div class="site-logo-title">
               <h1 class="title-site">114 <br> DEVERELL</h1>
             </div>
@@ -250,7 +250,7 @@
             <div class="btns-ext-int" id="btnExterior">EXTERIOR</div>
             <div class="btns-ext-int" id="btnInterior">INTERIOR</div>
           </div>
-          <div class="box-customize" style="display: flex;/* display: none; */">
+          <div class="box-customize" id="boxCustomize" style="/* display: none; */">
             <div class="tab-list" role="tablist" style="display: flex;/* display: none; */">
               <button class="tab-exterior tab-themes"id="btnThemes" role="tab" aria-controls="tabPanelThemes" aria-selected="true" tabindex="0">
                 <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -318,10 +318,6 @@
           <div class="option-name"> <span id="optionName">Wall #2</span> Options</div>
         </div>
         <div id="box-options-tiles" class="box-options-tiles" style="display: none;">
-          <div class="tile">
-              <img src="./ui_icons/brick01.png" alt="">
-            <span>First tile</span>
-          </div>
         </div>  
       </div>
       <div id="imagebox" class="imagebox getSumMod">

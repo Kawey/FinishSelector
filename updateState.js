@@ -90,3 +90,14 @@ function updateNavActiveIcon(targetState) {
       break;
   }
 }
+
+export function switchCustomInfoState(infoBoxMobile, boxCustomize) {
+  console.log("switchCustomInfoState");
+  if (localStorage.state === 'info') {
+    infoBoxMobile.classList.add("act-mob-info")
+    boxCustomize.classList.add("act-mob-info")
+  }else {
+    infoBoxMobile.classList.remove("act-mob-info")
+    boxCustomize.classList.remove("act-mob-info")
+  }
+}

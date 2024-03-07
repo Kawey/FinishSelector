@@ -1,4 +1,22 @@
-import {updateState, turnOptionMod} from './updateState.js'
+import {updateState, turnOptionMod, switchCustomInfoState} from './updateState.js'
+import { navBar } from '../navBar.js'
+
+// mobile nav bar state menagment
+localStorage.state ? localStorage.state 
+: localStorage.state = "customize"
+
+if (localStorage.state === "summary" || localStorage.state === "fp") {
+  localStorage.state = "customize"
+}
+
+const infoBoxMobile = document.getElementById("info-box-album");
+const boxCustomize = document.getElementById("boxCustomize");
+
+switchCustomInfoState(infoBoxMobile, boxCustomize)
+const elmNavBar = document.getElementById('nav-mobile')
+navBar(elmNavBar, localStorage.state,infoBoxMobile, boxCustomize)
+
+
 
 const btnCloseOptions = document.getElementById("btnCloseOption");
 const optionBox = document.getElementById('option-box')
@@ -16,12 +34,6 @@ const modalInfo = document.getElementById("modal-info-mobile");
 const modalFP = document.getElementById("modal-FP-mobile");
 const modSummary = document.getElementById("box-summary");
 const modCategory = document.getElementById("box-category");
-
-//const infoBoxAlbum = document.getElementById("info-box-album");
-
-//const btnSumLands = document.getElementById("btnSumLands");
-
-//const btnCloseFPLands = document.getElementById("btnCloseFPLands");
 
 // TABS SYSTEM
 const tabsContainer = document.querySelector("[role=tablist]");
@@ -41,6 +53,9 @@ const btnsCloseSum = document.querySelectorAll(".btnCloseSum")
 
 let currentTheme = 0 //remove?
 const currentState = new URLSearchParams(window.location.search).get('state');
+
+
+
 
 // let userSelect = presets[0]
 // localStorage.selected = JSON.stringify(userSelect);
@@ -93,6 +108,7 @@ extIntBtns.forEach(element => {
     }
   });
 });
+
 // Switch Color / Custom
 tabsContainer.addEventListener("click", (e) => {
   const clickedTab = e.target.closest("button");
