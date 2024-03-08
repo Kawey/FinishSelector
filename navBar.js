@@ -9,12 +9,14 @@ export function navBar(element, target ,infoBoxMobile, boxCustomize) {
     case 'summary':
       activeSummary = 'activeNavIcon'
       linkSummary = ''
+      linkFP = `onclick="location.href='../page-fp/floor-plan.html'"`;
+      linkCustomizeInfo = `onclick="location.href='../index.html'"`;
       break;
     case 'fp':
       activeFp = 'activeNavIcon'
       linkFP = ''
       linkCustomizeInfo = `onclick="location.href='../index.html'"`;
-      let linkSummary = `onclick="location.href='../page-sum/summary.html'"`;
+      linkSummary = `onclick="location.href='../page-sum/summary.html'"`;
       break;
       case 'info':
         activeInfo = 'activeNavIcon'
