@@ -42,6 +42,11 @@ if (urlParams.size ===7 && urlParams.has("Wall1")) {
   loadIcons(iconsHtml, userIcon)
 }
 
+export function resetImgSummary() {
+  loadSelectedImg(presets[0], imgBox)
+  loadIcons(iconsHtml, icons[0])
+}
+
 async function getAllAssets() {
   let response = await fetch('../asset.json');
   let allAssets = await response.json();
@@ -49,6 +54,15 @@ async function getAllAssets() {
   return allAssets
 }
 
+document.getElementById('btnReset').addEventListener('click', () => {
+  localStorage.selected = JSON.stringify(presets[0]);
+      localStorage.icon = JSON.stringify(icons[0]);
+      localStorage.asset = JSON.stringify(assets[0]);
+      loadSelectedImg(presets[0], imgBox)
+      loadIcons(iconsHtml, icons[0])
+      //localStorage.state === 'summary' ? resetImgSummary() : switchPreset(undefined, 0)
+
+});
 
 document.getElementById('btnShare').addEventListener('click', () => {
 console.log("share");

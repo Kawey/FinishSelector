@@ -1,4 +1,5 @@
 import {switchCustomInfoState, switchPreset} from './updateState.js'
+import {presets, icons, assets} from './presets.js'
 
 export function navBar(element, target ,infoBoxMobile, boxCustomize) {
   let [activeSummary, activeFp, activeInfo, activeCustom] = ['',"",'',''];
@@ -102,10 +103,13 @@ export function navBar(element, target ,infoBoxMobile, boxCustomize) {
       localStorage.state = clickTarget
       switchCustomInfoState(infoBoxMobile, boxCustomize)
     }else{
-      localStorage.state = clickTarget
+      clickTarget === 'reset' ? localStorage.state : localStorage.state = clickTarget
     }
 
-    if (clickTarget === 'reset') {
+    if (clickTarget === 'reset' && localStorage.state != 'summary') {
+      localStorage.selected = JSON.stringify(presets[0]);
+      localStorage.icon = JSON.stringify(icons[0]);
+      localStorage.asset = JSON.stringify(assets[0]);
       switchPreset(undefined, 0)
     }
     

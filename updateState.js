@@ -102,3 +102,10 @@ export function switchCustomInfoState(infoBoxMobile, boxCustomize) {
     boxCustomize.classList.remove("act-mob-info")
   }
 }
+
+// export function resetImgSummary() {
+//   const imgBox = document.getElementById('imagebox')
+//   const iconsHtml = document.getElementsByClassName('material')
+//   loadSelectedImg(presets[0], imgBox)
+//   loadIcons(iconsHtml, icons[0])
+// }
