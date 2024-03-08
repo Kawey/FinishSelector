@@ -2,9 +2,9 @@ import {switchCustomInfoState, switchPreset} from './updateState.js'
 
 export function navBar(element, target ,infoBoxMobile, boxCustomize) {
   let [activeSummary, activeFp, activeInfo, activeCustom] = ['',"",'',''];
-  let linkSummary = `onclick="location.href='../page-sum/summary.html'"`;
+  let linkSummary = `onclick="location.href='./page-sum/summary.html'"`;
   let linkFP = `onclick="location.href='./page-fp/floor-plan.html'"`;
-  let linkCustomizeInfo = `onclick="location.href='../index.html'"`;
+  let linkCustomizeInfo = `onclick="location.href='./index.html'"`;
   switch (target) {
     case 'summary':
       activeSummary = 'activeNavIcon'
