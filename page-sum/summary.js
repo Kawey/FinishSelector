@@ -3,6 +3,7 @@
 
 import {presets,icons, assets} from '../presets.js'
 import { navBar } from '../navBar.js'
+import { downloadPDF } from '../pdf.js'
 //console.log(navBar('WOW'));
 
 // mobile nav bar state menagment
@@ -69,32 +70,34 @@ console.log("share");
 createUrlParams(userAsset)
 });
 
-btnPDF.addEventListener("click", ()=>{
+btnPDF.addEventListener("click", async ()=>{
   console.log("pdf");
-  //btnPDF.style.display= "none";
-  //const element2print = document.getElementsByTagName('body')
-  const element2print = document.getElementById('print')
-  console.log(element2print);
-  //const element2print = document.createElement("div");
-  //const imgContainer = document.getElementById('image-container');
-  //const copyImg = imgContainer.cloneNode(true);
+  console.log();
 
-  //const element = document.getElementById('element-to-print');
-  //const copyElement = element.cloneNode(true);
-
-  //element2print.appendChild(copyImg);
-  //element2print.appendChild(copyElement);
-  var opt = {
-    margin: 5,
-    filename: 'hosue.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 5},
-    jsPDF: { unit: 'mm', format: 'letter', orientation: 'landscape' }
-    };
-
-    // New Promise-based usage:
-    html2pdf().set(opt).from(element2print).save();
-    btnPDF.style.display = "block";
+  const Tabs = [
+    "Wall1",
+    "Wall2",
+    "Roof",
+    "SoffitFascia",
+    "GarageDoor",
+    "Door",
+    "Windows"
+  ]
+  const allAssets = await getAllAssets()
+  let imgList = []
+  Tabs.forEach(tab => {
+    const srcImg = allAssets[tab]?.[userAsset[tab]]?.src ?? allAssets.Default[tab].src;
+    imgList.push(srcImg)
+  });
+  let colorList = []
+  for (let index = 2; index < Tabs.length; index++) {
+    const tab = Tabs[index];
+    const color = allAssets[tab]?.[userAsset[tab]]?.color ?? allAssets.Default[tab].color;
+    colorList.push(color)
+  }
+  console.log("userIcon",userIcon);
+  downloadPDF(imgList,[userIcon.Wall1,userIcon.Wall2],
+    colorList)
 });
 
 async function loadFromUrl(searchParams, imgBox, icons) {
