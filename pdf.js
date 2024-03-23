@@ -117,5 +117,5 @@ console.log(colorList);
   const pdfBytes = await pdfDoc.save()
 
   // Trigger the browser to download the PDF document
-  download(pdfBytes, "pdf-lib_modification_example.pdf", "application/pdf");
+  download(pdfBytes, "pdf_example.pdf", "application/pdf");
 }
